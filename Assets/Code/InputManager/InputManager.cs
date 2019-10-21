@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class InputManager 
+public static class InputManager
 {
 
     public static float MainHorizontal()
@@ -26,6 +26,55 @@ public static class InputManager
     public static Vector3 MainJoystick()
     {
         return new Vector3(MainHorizontal(), 0, MainVertical());
+    }
+
+    public static float LeftJoyStick()
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("J_MainHorizontal");
+        r += Input.GetAxis("J_MainVertical");
+
+        return Mathf.Clamp(r, -1.0f, 1.0f);
+    }
+    public static float RightJoyStickHorizontal()
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("K_MainHorizontal");
+
+        return Mathf.Clamp(r, -1.0f, 1.0f);
+    }
+
+    public static float RightJoyStickVertical()
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("K_MainVertical");
+
+        return Mathf.Clamp(r, -1.0f, 1.0f);
+    }
+
+    public static float LeftJoyStickHorizontal()
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("J_MainHorizontal");
+
+        return Mathf.Clamp(r, -1.0f, 1.0f);
+    }
+
+    public static float LeftJoyStickVertical()
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("J_MainVertical");
+
+        return Mathf.Clamp(r, -1.0f, 1.0f);
+    }
+
+    public static Vector3 MainRightJoystick()
+    {
+        return new Vector3(RightJoyStickHorizontal(), RightJoyStickVertical(), 0);
+    }
+    public static Vector3 MainLeftJoystick()
+    {
+        return new Vector3(LeftJoyStickHorizontal(), LeftJoyStickVertical(), 0);
     }
 
     public static bool AButton()

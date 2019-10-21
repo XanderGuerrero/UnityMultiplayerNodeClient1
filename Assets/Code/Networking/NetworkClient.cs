@@ -117,12 +117,14 @@ public class NetworkClient : SocketIOComponent
 
             float barrelRotation = E.data["barrelRotation"].f;
             float shipTilt = E.data["shipTiltRotation"].f;
+            float shipTiltX = E.data["shipTiltRotationX"].f;
+            float shipTiltY = E.data["shipTiltRotationY"].f;
 
             Debug.LogFormat("Data back to the client rotation values: ({0}) ", barrelRotation);
             NetworkIdentity ni = serverObjects[id];
 
-            ni.transform.localEulerAngles = new Vector3(0, barrelRotation, shipTilt);
-            ni.GetComponent<PlayerManager>().SetRotation(barrelRotation);
+            ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
+            //ni.GetComponent<PlayerManager>().SetRotation(barrelRotation);
 
         });
 
@@ -206,6 +208,8 @@ public class PlayerRotation
 {
     public float barrelRotation;
     public float shipTiltRotation;
+    public float shipTiltRotationX;
+    public float shipTiltRotationY;
 }
 
 

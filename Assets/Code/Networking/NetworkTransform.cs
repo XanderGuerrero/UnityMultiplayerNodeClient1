@@ -68,4 +68,10 @@ public class NetworkTransform : MonoBehaviour
         //Debug.Log("send position data: " + player.position.z);
         networkIdentity.GetSocket().Emit("updatePosition", new JSONObject(JsonUtility.ToJson(player)));
     }
+    //void OnGUI()
+    //{
+    //    GUILayout.Label("send position data: " + player.position.x);
+    //    GUILayout.Label("send position data: " + player.position.y);
+    //    GUILayout.Label("send position data: " + player.position.z);
+    //}
 }

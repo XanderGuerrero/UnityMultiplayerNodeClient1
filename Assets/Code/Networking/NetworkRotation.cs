@@ -10,6 +10,8 @@ public class NetworkRotation : MonoBehaviour
     [SerializeField]
     private float oldBarrelRotation;
     private float oldShipTilt;
+    private float oldShipTiltX;
+    private float oldShipTiltY;
 
     [Header("Class References")]
     [SerializeField]
@@ -27,15 +29,14 @@ public class NetworkRotation : MonoBehaviour
         player = new PlayerRotation();
         player.barrelRotation = 0;
         player.shipTiltRotation = 0;
+        player.shipTiltRotationX = 0;
+        player.shipTiltRotationY = 0;
 
         if (!networkIdentity.IsControlling())
         {
             enabled = false;
 
         }
-
-
-
     }
 
 
@@ -44,10 +45,12 @@ public class NetworkRotation : MonoBehaviour
     {
         if (networkIdentity.IsControlling())
         {
-            if (oldBarrelRotation != playermanager.GetLastRotation() || oldShipTilt != transform.localEulerAngles.z)
+            if (/*oldBarrelRotation != playermanager.GetLastRotation() ||*/ oldShipTilt != transform.localEulerAngles.z || oldShipTiltX != transform.localEulerAngles.x || oldShipTiltY != transform.localEulerAngles.y)
             {
-                oldBarrelRotation = playermanager.GetLastRotation();
+                /*oldBarrelRotation = playermanager.GetLastRotation();*/
                 oldShipTilt = transform.localEulerAngles.z;
+                oldShipTilt = transform.localEulerAngles.x;
+                oldShipTilt = transform.localEulerAngles.y;
                 stillCounter = 0;
                 sendData();
             }
@@ -66,9 +69,18 @@ public class NetworkRotation : MonoBehaviour
     public void sendData()
     {
         player.shipTiltRotation = transform.localEulerAngles.z.TwoDecimals();
-        player.barrelRotation = playermanager.GetLastRotation().TwoDecimals();
+        player.shipTiltRotationX = transform.localEulerAngles.x.TwoDecimals();
+        player.shipTiltRotationY = transform.localEulerAngles.y.TwoDecimals();
+        //player.barrelRotation = playermanager.GetLastRotation().TwoDecimals();
         //Debug.Log("send rot data: " + player.barrelRotation);
         networkIdentity.GetSocket().Emit("updateRotation", new JSONObject(JsonUtility.ToJson(player)));
+    }
+
+    void OnGUI()
+    {
+        GUILayout.Label("send position data: " + player.shipTiltRotation);
+        //GUILayout.Label("send position data: " + player.position.y);
+        //GUILayout.Label("send position data: " + player.position.z);
     }
 
 }

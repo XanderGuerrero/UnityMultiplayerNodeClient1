@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+
+    private float baseSpeed = 1f;
+    private float rotSpeedX = 2.0f;
+    private float rotSpeedY = 1.5f;
+    private float rotateSpeed = 100.5f;
+    private Quaternion startRotation;
+    //private float speed = 40;
+    private Vector3 force;
+    private Rigidbody rb;
+    //private float tilt = 10;
+
+
+
+
     private float lastRotation;
     public GameObject crossHairs;
     //[Header("Object References")]
@@ -45,6 +59,7 @@ public class PlayerManager : MonoBehaviour
         bulletData.position = new Position();
         bulletData.direction = new Position();
         controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
     public void Update()
     {
@@ -68,23 +83,26 @@ public class PlayerManager : MonoBehaviour
     }
 
     //access to get the last rotation
-    public float GetLastRotation()
-    {
-        return lastRotation;
-    }
+    //public float GetLastRotation()
+    //{
+    //    return lastRotation;
+    //}
 
     //not our player but setting their rotations on our side
-    public void SetRotation(float value)
-    {
-        transform.rotation = Quaternion.Euler(0, 0, value);
-    }
+    //public void SetRotation(float value)
+    //{
+    //    transform.rotation = Quaternion.Euler(0, 0, value);
+    //}
 
 
     private void checkMovement()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
+        Vector3 Linputs = InputManager.MainLeftJoystick();
+        //float horizontal = Input.GetAxis("Horizontal");
+        //float vertical = Input.GetAxis("Vertical");
+        //rb.MovePosition(new Vector3(Linputs.x, 0.0f, Linputs.y) * speed * Time.deltaTime);
+        //rb.MovePosition(transform.position + transform.forward * Time.deltaTime);
+        rb.MovePosition(transform.position + (transform.right * Linputs.x + transform.forward * Linputs.y) * 1);
         //Debug.Log
         //   ("about to move");
         //movement in 3d is x and z 
@@ -95,7 +113,7 @@ public class PlayerManager : MonoBehaviour
 
 
         //this is the good code
-        transform.position += new Vector3(horizontal, 0.0f, vertical) * speed * Time.deltaTime;
+        //transform.position += new Vector3(horizontal, 0.0f, vertical) * speed * Time.deltaTime;
 
         //this is experiment
 
@@ -122,7 +140,7 @@ public class PlayerManager : MonoBehaviour
 
         //    moveVector += dir;
         //    transform.rotation = Quaternion.LookRotation(moveVector);
-                
+
         //}
         //transform.position += moveVector * Time.deltaTime;
 
@@ -145,6 +163,51 @@ public class PlayerManager : MonoBehaviour
 
         if (!screenRect.Contains(Input.mousePosition))
             return;
+
+
+        //get input
+        Vector3 Linputs = InputManager.MainLeftJoystick();
+        Vector3 Rinputs = InputManager.MainRightJoystick();
+
+        //Quaternion currentRotation = transform.rotation;
+        //if (InputManager.MainRightJoystick() == Vector3.zero)
+        //{
+        //    transform.rotation = Quaternion.RotateTowards(currentRotation, startRotation, Time.deltaTime * rotateSpeed);
+        //}
+        //Quaternion.LookRotation(new Vector3(Input.GetAxis("K_MainVertical"), Input.GetAxis("K_MainHorizontal"),0f));
+
+        //this worked somewhat but difficult to control once the rotation has changed
+        //transform.Rotate(new Vector3(Input.GetAxis("K_MainVertical"), Input.GetAxis("K_MainHorizontal"), 0f));
+
+
+        //pitch and yaw code
+        Vector3 moveVector = transform.forward * baseSpeed;
+
+        //moveVector.z = rb.velocity.x * -tilt;
+        Debug.Log(moveVector);
+        Vector3 yaw = Rinputs.x * transform.right * rotSpeedX * Time.deltaTime;
+        Vector3 pitch = Rinputs.y * transform.up * rotSpeedY * Time.deltaTime;
+        Vector3 dir = yaw + pitch;
+        //dont let player go too far up or down, add the direction to move vector
+        float MaxX = Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
+        //Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
+        if (MaxX < 90 && MaxX > 70 || MaxX > 270 && MaxX < 290)
+        {
+
+
+        }
+        else
+        {
+            moveVector += dir;
+
+            transform.rotation = Quaternion.LookRotation(moveVector);
+            //transform.Translate(moveVector);
+        }
+        //transform.position -= transform.forward * Time.deltaTime * speed;
+        //force = new Vector3(Linputs.x, 0.0F, Linputs.y);
+        //rb.AddRelativeForce(force * 1000f);
+       
+
 
         //float h = horizontalSpeed * Input.GetAxis("Mouse X");
         //float v = verticalSpeed * Input.GetAxis("Mouse Y");
@@ -171,30 +234,30 @@ public class PlayerManager : MonoBehaviour
         //}
 
         //****************************************************************************
-        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition/* new Vector3(h, v, 0).normalized*/);
-        Plane groundPlane = new Plane(Vector3.down, Vector3.zero);
-        float rayLength;
+        //Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition/* new Vector3(h, v, 0).normalized*/);
+        //Plane groundPlane = new Plane(Vector3.down, Vector3.zero);
+        //float rayLength;
 
-        if (groundPlane.Raycast(cameraRay, out rayLength))
-        {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
-            //pointToLook.Normalize();
-            //float rot = Mathf.Atan2(-pointToLook.x, -pointToLook.z) * Mathf.Rad2Deg;
-            //transform.rotation = Quaternion.Euler(0, -rot, 0) ;
-            //lastRotation = transform.localEulerAngles.z.TwoDecimals();
-            //transform.LookAt(pointToLook);
-            //transform.rotation = Quaternion.Euler(0, pointToLook.y, 0);
+        //if (groundPlane.Raycast(cameraRay, out rayLength))
+        //{
+        //    Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+        //    Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+        //    //pointToLook.Normalize();
+        //    //float rot = Mathf.Atan2(-pointToLook.x, -pointToLook.z) * Mathf.Rad2Deg;
+        //    //transform.rotation = Quaternion.Euler(0, -rot, 0) ;
+        //    //lastRotation = transform.localEulerAngles.z.TwoDecimals();
+        //    //transform.LookAt(pointToLook);
+        //    //transform.rotation = Quaternion.Euler(0, pointToLook.y, 0);
 
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition/*new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"),0)*/);
-            Vector3 dif = mousePosition - transform.position;
-            dif.Normalize();
-            float tilt = Mathf.Atan2(-dif.x, -dif.z) * Mathf.Rad2Deg;
-            //float rot = Mathf.Atan2(dif.y, dif.x) * Mathf.Rad2Deg;
+        //    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition/*new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"),0)*/);
+        //    Vector3 dif = mousePosition - transform.position;
+        //    dif.Normalize();
+        //    float tilt = Mathf.Atan2(-dif.x, -dif.z) * Mathf.Rad2Deg;
+        //    //float rot = Mathf.Atan2(dif.y, dif.x) * Mathf.Rad2Deg;
 
-            lastRotation = -tilt;
-            transform.rotation = Quaternion.Euler(0, 0, -tilt);
-        }
+        //    lastRotation = -tilt;
+        //    transform.rotation = Quaternion.Euler(0, 0, -tilt);
+        //}
         //****************************************************************************
         //Debug.Log("Rotation: " + transform.rotation);
         //transform.LookAt(pointToLook);
@@ -226,6 +289,15 @@ public class PlayerManager : MonoBehaviour
         ////transform.Rotate(0, -h, 0);
         //transform.Rotate(0, -v, 0);
     }
+
+
+    //void OnGUI()
+    //{
+    //    GUILayout.Label("RightJoystick " + InputManager.MainRightJoystick().ToString());
+    //    GUILayout.Label("LeftJoystick " + InputManager.MainLeftJoystick().ToString());
+    //    GUILayout.Label("Force " + force);
+    //}
+
 
     private void checkShooting()
     {
