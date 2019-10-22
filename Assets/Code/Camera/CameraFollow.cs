@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class CameraFollow : MonoBehaviour
 {
 
-    public Transform target;
+    public Transform cameraTarget;
     public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+    public Vector3 distanceFromCameraTarget;
     private string cID = string.Empty;
     private GameObject player;
     bool firstTime = true;
@@ -32,7 +32,7 @@ public class CameraFollow : MonoBehaviour
                 player = GameObject.Find("/[Server Spawned Object]/Player(" + NetworkClient.ClientId + ")");
                 //Debug.Log("NetworkClient.ClientId:" + NetworkClient.ClientId);
                 //Debug.Log("CAMERA:" + player.name);
-                target = player.transform;
+                cameraTarget = player.transform;
                 firstTime = false;
             }
 
@@ -52,9 +52,9 @@ public class CameraFollow : MonoBehaviour
             //    }
             //}
         }
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        Vector3 desiredPosition = cameraTarget.position + distanceFromCameraTarget;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
-        transform.LookAt(target);
+        transform.LookAt(cameraTarget);
     }
 }
