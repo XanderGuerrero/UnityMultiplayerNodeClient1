@@ -17,44 +17,39 @@ public class CameraFollow : MonoBehaviour
         
     }
 
-    //// Update is called once per frame
-    //void FixedUpdate()
-    //{
-       
-    //}
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if(firstTime)
+        if (firstTime)
         {
             if (NetworkClient.ClientId != string.Empty)
             {
                 player = GameObject.Find("/[Server Spawned Object]/Player(" + NetworkClient.ClientId + ")");
                 //Debug.Log("NetworkClient.ClientId:" + NetworkClient.ClientId);
                 //Debug.Log("CAMERA:" + player.name);
-                cameraTarget = player.transform;
-                firstTime = false;
+                if (player != null)
+                {
+                    cameraTarget = player.transform;
+                    this.transform.SetParent(cameraTarget);
+                    this.transform.localPosition = -Vector3.forward * 15 + Vector3.up * 3;
+                    firstTime = false;
+                }
             }
-
-
-            //GameObject[] firstList = GameObject.FindObjectsOfType<GameObject>();
-            //List<Object> finalList = new List<Object>();
-
-            //for (var i = 0; i < firstList.Length; i++)
-            //{
-            //    Debug.Log("in start method :" + cID);
-            //    Debug.Log("gameobject name: " + firstList[i].gameObject.name);
-            //    if (firstList[i].gameObject.name == "[Server Spawned Object]"/*string.Format("Player({0})", cID)*/)
-            //    {
-            //        Debug.Log("GameObjectName: 2___ " + firstList[i].gameObject.name);
-            //        target = firstList[i].gameObject.get;
-            //        //target = gameObject.transform;
-            //    }
-            //}
         }
-        Vector3 desiredPosition = cameraTarget.position + distanceFromCameraTarget;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-        transform.position = smoothedPosition;
-        transform.LookAt(cameraTarget);
+    }
+
+    private void FixedUpdate()
+    {
+        //transform.localEulerAngles = new Vector3(cameraTarget.transform.localEulerAngles.x, cameraTarget.transform.localEulerAngles.y, cameraTarget.transform.localEulerAngles.z);
+        //Vector3 desiredPosition = cameraTarget.position + distanceFromCameraTarget;
+        //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        //transform.position = smoothedPosition;
+        Vector3 pointToLook = cameraTarget.transform.position;
+        var distance = pointToLook.magnitude;
+        var direction = pointToLook / distance; // This is now the normalized direction.
+        Debug.DrawLine(this.transform.position, cameraTarget.transform.position, Color.red);
+        direction.Normalize();
+        //transform.LookAt(cameraTarget.transform.position);
+        //transform.LookAt(cameraTarget);
     }
 }

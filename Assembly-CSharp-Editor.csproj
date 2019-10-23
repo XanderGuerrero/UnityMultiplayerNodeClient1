@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{426804AD-37E6-92E0-B2E0-668DBD0461C3}</ProjectGuid>
+    <ProjectGuid>{1BEF1582-95C2-B2FE-F6EC-58389999B5C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -65,37 +65,37 @@
     <Compile Include="Assets\SocketIO\JSONObject\Editor\JSONChecker.cs" />
     <Compile Include="Assets\StarSparrow\Readme\Readme Files\Scripts\Editor\ReadmeEditor.cs" />
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -287,7 +287,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:/WorkSpace/UnityMultiplayerClient1/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -646,7 +646,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{DEF5C9FB-0CCA-7085-A3F0-8AEB12D0687C}</Project>
+      <Project>{25548661-6465-0F8A-1277-BFFD1AE503EE}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>

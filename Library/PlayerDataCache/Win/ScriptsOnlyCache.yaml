@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - CameraFollow
     - NetworkClient
     - NetworkIdentity
     - NetworkRotation
@@ -58,6 +59,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11136}
     - Class: 114
       Script: {instanceID: 11192}
+    - Class: 114
+      Script: {instanceID: 11594}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -553,11 +556,11 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 7c4d61ba679beaa5d71821c8c9d31078
+      Hash: dab89f2f9f298f83e9086a7f8c001d9a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollow
   platform: 5
   scenePathNames:
   - Assets/Scenes/Tutorial.unity
-  playerPath: D:/WorkSpace/NodeUnityTest/build/UnityMultiplayerClient1.exe
+  playerPath: D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/build/UnityMultiplayerNodeClient1.exe
