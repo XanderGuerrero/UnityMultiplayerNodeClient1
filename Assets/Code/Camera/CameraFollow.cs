@@ -31,7 +31,8 @@ public class CameraFollow : MonoBehaviour
                 {
                     cameraTarget = player.transform;
                     this.transform.SetParent(cameraTarget);
-                    this.transform.localPosition = -Vector3.forward * 15 + Vector3.up * 3;
+                    this.transform.localPosition = -Vector3.forward * 12.3f + Vector3.up * 3.4f;
+                    this.transform.localEulerAngles = new Vector3(7f, 0, 0);
                     firstTime = false;
                 }
             }

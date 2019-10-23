@@ -103,6 +103,11 @@ public class PlayerManager : MonoBehaviour
         //rb.MovePosition(new Vector3(Linputs.x, 0.0f, Linputs.y) * speed * Time.deltaTime);
         //rb.MovePosition(transform.position + transform.forward * Time.deltaTime);
         rb.MovePosition(transform.position + (transform.right * Linputs.x + transform.forward * Linputs.y) * 1);
+       // rb.rotation = Quaternion.Euler(15f, 0.0f, 0f);
+
+        //if movement is left or right, tilt the ship
+
+        //rb.rotation = Quaternion.Euler(0.0f, 0.0f,-tilt);
         //Debug.Log
         //   ("about to move");
         //movement in 3d is x and z 
