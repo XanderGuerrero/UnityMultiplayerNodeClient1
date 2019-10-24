@@ -16,5 +16,9 @@ public class testInputManager : MonoBehaviour
         {
             Debug.Log(InputManager.MainJoystick());
         }
+        if (InputManager.RightTrigger() ==1)
+        {
+            Debug.Log(InputManager.MainJoystick());
+        }
     }
 }

@@ -62,6 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\48 Particle Effect Pack\Script\csDestroyEffect.cs" />
+    <Compile Include="Assets\48 Particle Effect Pack\Script\csMouseOrbit.cs" />
+    <Compile Include="Assets\48 Particle Effect Pack\Script\csParticleEffectPackLightControl.cs" />
+    <Compile Include="Assets\48 Particle Effect Pack\Script\csParticleMove.cs" />
+    <Compile Include="Assets\48 Particle Effect Pack\Script\csShowAllEffect.cs" />
+    <Compile Include="Assets\48 Particle Effect Pack\ShurikenEffectEditor\csShurikenEffectChanger.cs" />
+    <Compile Include="Assets\48 Particle Effect Pack\ShurikenEffectEditor\csShurikenEffectEditor.cs" />
     <Compile Include="Assets\Code\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Code\Camera\CameraMotor.cs" />
     <Compile Include="Assets\Code\GamePlay\CollisionDestory.cs" />
@@ -160,31 +167,31 @@
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
     <None Include="Assets\SocketIO\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -93,4 +93,11 @@ public static class InputManager
     {
         return Input.GetButtonDown("Y_Button");
     }
+    public static float RightTrigger()
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("RightTrigger");
+
+        return Mathf.Clamp(r, 0.0f, 1.0f);
+    }
 }

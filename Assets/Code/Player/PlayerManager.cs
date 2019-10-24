@@ -102,7 +102,7 @@ public class PlayerManager : MonoBehaviour
         //float vertical = Input.GetAxis("Vertical");
         //rb.MovePosition(new Vector3(Linputs.x, 0.0f, Linputs.y) * speed * Time.deltaTime);
         //rb.MovePosition(transform.position + transform.forward * Time.deltaTime);
-        rb.MovePosition(transform.position + (transform.right * Linputs.x + transform.forward * Linputs.y) * 1);
+        rb.MovePosition(transform.position + (transform.right * Linputs.x + transform.forward * Mathf.Clamp( Linputs.y, 0, 1)) * 1);
        // rb.rotation = Quaternion.Euler(15f, 0.0f, 0f);
 
         //if movement is left or right, tilt the ship
@@ -309,7 +309,7 @@ public class PlayerManager : MonoBehaviour
 
 
         shootingCoolDown.CooldownUpdate();
-        if (InputManager.AButton() && !shootingCoolDown.IsOnCoolDown())
+        if ((InputManager.RightTrigger() == 1) && !shootingCoolDown.IsOnCoolDown())
         {
             shootingCoolDown.StartCoolDown();
             //define bullet
