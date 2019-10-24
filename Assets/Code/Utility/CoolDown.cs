@@ -46,9 +46,4 @@ public class CoolDown : MonoBehaviour
         currentTime = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

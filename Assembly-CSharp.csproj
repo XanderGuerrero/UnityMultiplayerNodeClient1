@@ -72,6 +72,7 @@
     <Compile Include="Assets\Code\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Code\Camera\CameraMotor.cs" />
     <Compile Include="Assets\Code\GamePlay\CollisionDestory.cs" />
+    <Compile Include="Assets\Code\GamePlay\WhoActivateMe.cs" />
     <Compile Include="Assets\Code\InputManager\InputManager.cs" />
     <Compile Include="Assets\Code\InputManager\testInputManager.cs" />
     <Compile Include="Assets\Code\Networking\NetworkClient.cs" />

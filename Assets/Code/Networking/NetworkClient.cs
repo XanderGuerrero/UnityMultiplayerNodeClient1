@@ -164,10 +164,15 @@ public class NetworkClient : SocketIOComponent
                     float directionX = E.data["direction"]["x"].f;
                     float directionY = E.data["direction"]["y"].f;
                     float directionZ = E.data["direction"]["z"].f;
+                    string activator = E.data["activator"].ToString();
+                    activator = activator.Trim('"');
 
                     float rot = Mathf.Atan2(directionZ, directionX) * Mathf.Rad2Deg;
                     Vector3 currentRotation = new Vector3(0, 0, rot - 90);
                     spawnedObject.transform.rotation = Quaternion.Euler(currentRotation);
+
+                    WhoActivateMe whoActivateMe = spawnedObject.GetComponent<WhoActivateMe>();
+                    whoActivateMe.SetActivator ( activator);
                 }
                 serverObjects.Add(id, ni);
             }
@@ -217,6 +222,15 @@ public class PlayerRotation
 public class BulletData
 {
     public string id;
+    public string activator;
     public Position position;
     public Position direction;
+}
+
+
+[Serializable]
+public class IdData
+{
+    public string id;
+
 }

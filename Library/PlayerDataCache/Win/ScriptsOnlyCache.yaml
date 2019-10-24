@@ -2,12 +2,15 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CameraFollow
+    - CameraMotor
+    - CollisionDestory
     - NetworkClient
     - NetworkIdentity
     - NetworkRotation
     - NetworkTransform
     - PlayerManager
     - ServerObjects
+    - WhoActivateMe
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -48,20 +51,28 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9902}
+      Script: {instanceID: 9904}
     - Class: 114
-      Script: {instanceID: 10348}
+      Script: {instanceID: 10356}
     - Class: 114
-      Script: {instanceID: 10388}
+      Script: {instanceID: 10396}
     - Class: 114
-      Script: {instanceID: 10512}
+      Script: {instanceID: 10520}
     - Class: 114
-      Script: {instanceID: 11136}
+      Script: {instanceID: 11008}
     - Class: 114
-      Script: {instanceID: 11192}
+      Script: {instanceID: 11150}
     - Class: 114
-      Script: {instanceID: 11594}
+      Script: {instanceID: 11206}
+    - Class: 114
+      Script: {instanceID: 11256}
+    - Class: 114
+      Script: {instanceID: 11610}
+    - Class: 114
+      Script: {instanceID: 15244}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 136
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -142,6 +153,12 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: csParticleMove
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -188,6 +205,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: PhysicsRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: e1d1c0270b41dd02dd52771e78a23b80
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: csMouseOrbit
   - hash:
       serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
@@ -244,6 +267,12 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 02fa6a581bfd4fbea9944ae76bbf8eec
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: csParticleEffectPackLightControl
+  - hash:
+      serializedVersion: 2
       Hash: b8a5e8091ab0b8861d2add371082c5e0
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -260,6 +289,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Selectable
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: csDestroyEffect
   - hash:
       serializedVersion: 2
       Hash: 67f4f2d079eb5e51898cce8b1ebb9c50
@@ -340,6 +375,12 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 646266ebf90017f07b675ffa4e1ffce3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: csShowAllEffect
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -388,10 +429,22 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: csShurikenEffectChanger
+  - hash:
+      serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: TimelineAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 89426bd1e30a23aac4a1d905639756c6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraMotor
   - hash:
       serializedVersion: 2
       Hash: 58e68364412c67eae2bdb4954be2dcc2
@@ -436,7 +489,7 @@ ScriptsOnlyBuild:
     className: NetworkClient
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: c60b3fd2caccd5d735b80641c48f8e42
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CollisionDestory
@@ -520,6 +573,12 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 1ec0edbbe5080e0cd210b193f32d7f3e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: csShurikenEffectEditor
+  - hash:
+      serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -560,7 +619,13 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollow
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WhoActivateMe
   platform: 5
   scenePathNames:
   - Assets/Scenes/Tutorial.unity
-  playerPath: D:/WorkSpace/Oct22-2019/UnityMultiplayerNodeClient1/build/UnityMultiplayerNodeClient1.exe
+  playerPath: D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/build/UnityMultiplayerNodeClient1.exe

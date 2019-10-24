@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 6600027840687768444}
   - component: {fileID: 6488842853715659148}
   - component: {fileID: 593182670012037070}
+  - component: {fileID: 6698975977420732902}
+  - component: {fileID: 3409728233690725554}
+  - component: {fileID: 1368521368498905497}
+  - component: {fileID: 4952582073338357974}
   m_Layer: 0
   m_Name: Bullet 2
   m_TagString: Untagged
@@ -74,6 +78,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   isControlling: 0
+--- !u!54 &6698975977420732902
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600027840678098584}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!135 &3409728233690725554
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600027840678098584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.54
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1368521368498905497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600027840678098584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894509988bf81ca438cbace4f4244118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4952582073338357974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600027840678098584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d251222d5b869aa4ca466e1a19a6495c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkIdentity: {fileID: 593182670012037070}
+  whoActivatedMe: {fileID: 1368521368498905497}
 --- !u!1 &6600027840678098588
 GameObject:
   m_ObjectHideFlags: 0
