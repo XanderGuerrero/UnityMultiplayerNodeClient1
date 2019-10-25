@@ -313,6 +313,7 @@ public class PlayerManager : MonoBehaviour
         {
             shootingCoolDown.StartCoolDown();
             //define bullet
+            bulletData.activator = NetworkClient.ClientId;
             bulletData.position.x = shotSpawnPoint.position.x.TwoDecimals();
             bulletData.position.y = shotSpawnPoint.position.y.TwoDecimals();
             bulletData.position.z = shotSpawnPoint.position.z.TwoDecimals();

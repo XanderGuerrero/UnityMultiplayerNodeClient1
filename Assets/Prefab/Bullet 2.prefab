@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 6600027840687768444}
   - component: {fileID: 6488842853715659148}
   - component: {fileID: 593182670012037070}
+  - component: {fileID: -5566614263512515849}
+  - component: {fileID: 5084891719297703465}
+  - component: {fileID: -8734472711573197931}
+  - component: {fileID: -7673500871543721908}
   m_Layer: 0
   m_Name: Bullet 2
   m_TagString: Untagged
@@ -74,6 +78,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   isControlling: 0
+--- !u!114 &-5566614263512515849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600027840678098584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d251222d5b869aa4ca466e1a19a6495c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkIdentity: {fileID: 593182670012037070}
+  whoActivatedMe: {fileID: 5084891719297703465}
+--- !u!114 &5084891719297703465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600027840678098584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759cc9c26c3e5314db33ad329a99a5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8734472711573197931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600027840678098584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23eba079586168c468b82186ea9a29ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkIdentity: {fileID: 593182670012037070}
+  whoActivatedMe: {fileID: 5084891719297703465}
+--- !u!135 &-7673500871543721908
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600027840678098584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6600027840678098588
 GameObject:
   m_ObjectHideFlags: 0
