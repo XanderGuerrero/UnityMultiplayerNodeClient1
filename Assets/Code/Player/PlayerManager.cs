@@ -102,7 +102,7 @@ public class PlayerManager : MonoBehaviour
         //float vertical = Input.GetAxis("Vertical");
         //rb.MovePosition(new Vector3(Linputs.x, 0.0f, Linputs.y) * speed * Time.deltaTime);
         //rb.MovePosition(transform.position + transform.forward * Time.deltaTime);
-        rb.MovePosition(transform.position + (transform.right * Linputs.x + transform.forward * Mathf.Clamp( Linputs.y, 0, 1)) * 1);
+        rb.MovePosition(transform.position + (transform.right * Linputs.x + transform.forward * Mathf.Clamp( Linputs.y, 0, 1)) * 1 * speed);
        // rb.rotation = Quaternion.Euler(15f, 0.0f, 0f);
 
         //if movement is left or right, tilt the ship
@@ -196,18 +196,18 @@ public class PlayerManager : MonoBehaviour
         //dont let player go too far up or down, add the direction to move vector
         float MaxX = Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
         //Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
-        if (MaxX < 90 && MaxX > 70 || MaxX > 270 && MaxX < 290)
-        {
+        //if (MaxX < 90 && MaxX > 70 || MaxX > 270 && MaxX < 290)
+        //{
 
 
-        }
-        else
-        {
+        //}
+        //else
+        //{
             moveVector += dir;
 
             transform.rotation = Quaternion.LookRotation(moveVector);
             //transform.Translate(moveVector);
-        }
+        //}
         //transform.position -= transform.forward * Time.deltaTime * speed;
         //force = new Vector3(Linputs.x, 0.0F, Linputs.y);
         //rb.AddRelativeForce(force * 1000f);

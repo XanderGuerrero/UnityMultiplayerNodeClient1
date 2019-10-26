@@ -9,7 +9,7 @@ public class CoolDown : MonoBehaviour
     private float currentTime;
     private bool onCooldown;
 
-    public CoolDown(float Length = 1, bool StartWithCoolDown = false)
+    public CoolDown(float Length = 0, bool StartWithCoolDown = false)
     {
         currentTime = 0;
         length = Length;

@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossHairs: {fileID: 0}
-  speed: 25
+  speed: 3
   networkIdentity: {fileID: 594026060181728883}
   shotSpawnPoint: {fileID: 3856816170415509030}
   tilt: 0
@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3856816170415509017}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.18, z: 5.99}
+  m_LocalPosition: {x: 0, y: -0.18, z: 5.561}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3857871268353249338}
