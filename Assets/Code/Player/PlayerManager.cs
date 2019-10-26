@@ -189,7 +189,7 @@ public class PlayerManager : MonoBehaviour
         Vector3 moveVector = transform.forward * baseSpeed;
 
         //moveVector.z = rb.velocity.x * -tilt;
-        Debug.Log(moveVector);
+        //Debug.Log(moveVector);
         Vector3 yaw = Rinputs.x * transform.right * rotSpeedX * Time.deltaTime;
         Vector3 pitch = Rinputs.y * transform.up * rotSpeedY * Time.deltaTime;
         Vector3 dir = yaw + pitch;

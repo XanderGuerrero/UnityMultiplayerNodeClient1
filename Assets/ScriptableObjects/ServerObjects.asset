@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - Name: Bullet
-    Prefab: {fileID: 5651188464031960039, guid: 2d068b58ba3a2394199a016dfa305ecf,
+    Prefab: {fileID: 6600027840678098584, guid: a17385ed3fd33af4db1057baa92f5f1a,
       type: 3}

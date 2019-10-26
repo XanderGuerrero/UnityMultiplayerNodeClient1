@@ -11,7 +11,7 @@ public class CollisionDestory : MonoBehaviour
     [SerializeField]
     private WhoActivateMe whoActivatedMe;
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
         //get the identity of the object we collided with
         NetworkIdentity ni = collision.gameObject.GetComponent<NetworkIdentity>();

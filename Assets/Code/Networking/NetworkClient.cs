@@ -110,7 +110,7 @@ public class NetworkClient : SocketIOComponent
 
         On("updateRotation", (E) =>
         {
-            Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
+            //Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
 
             string id = E.data["id"].ToString();
             id = id.Trim('"');
@@ -120,7 +120,7 @@ public class NetworkClient : SocketIOComponent
             float shipTiltX = E.data["shipTiltRotationX"].f;
             float shipTiltY = E.data["shipTiltRotationY"].f;
 
-            Debug.LogFormat("Data back to the client rotation values: ({0}) ", barrelRotation);
+            //Debug.LogFormat("Data back to the client rotation values: ({0}) ", barrelRotation);
             NetworkIdentity ni = serverObjects[id];
 
             ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
@@ -130,24 +130,24 @@ public class NetworkClient : SocketIOComponent
 
         On("serverSpawn", (E) =>
         {
-            Debug.Log("about to fire1");
+            //Debug.Log("about to fire1");
             string name = E.data["name"].str;
             name = name.Trim('"');
-            Debug.Log("NAME :" + name);
+            //Debug.Log("NAME :" + name);
             string id = E.data["id"].ToString();
             id = id.Trim('"');
-            Debug.Log("about to fire2");
+            //Debug.Log("about to fire2");
             float x = E.data["position"]["x"].f;
-            Debug.Log("X :" + x);
+            //Debug.Log("X :" + x);
             float y = E.data["position"]["y"].f;
-            Debug.Log("Y :" + y);
+            //Debug.Log("Y :" + y);
             float z = E.data["position"]["z"].f;
-            Debug.Log("Z :" + z);
+            //Debug.Log("Z :" + z);
             Debug.Log("server wants us to spawn a " + name);
 
             if (!serverObjects.ContainsKey(id))
             {
-                Debug.Log("about to fire4");
+                //Debug.Log("about to fire4");
                 ServerObjectData sod = serverSpawnables.GetObjectByName(name);
                 var spawnedObject = Instantiate(sod.Prefab, networkContainer);
                 spawnedObject.transform.position = new Vector3(x, y, z);
@@ -160,7 +160,7 @@ public class NetworkClient : SocketIOComponent
                 if (name == "Bullet")
                 //if (name == "Bullet(Clone)")
                 {
-                    Debug.Log("about to fire5");
+                    //Debug.Log("about to fire5");
                     float directionX = E.data["direction"]["x"].f;
                     float directionY = E.data["direction"]["y"].f;
                     float directionZ = E.data["direction"]["z"].f;
