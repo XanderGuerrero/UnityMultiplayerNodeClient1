@@ -645,4 +645,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/Tutorial.unity
-  playerPath: D:/WorkSpace/Oct23_2019/UnityMultiplayerNodeClient1/build/UnityMultiplayerNodeClient1.exe
+  playerPath: D:/WorkSpace/Oct26/UnityMultiplayerNodeClient1/build/UnityMultiplayerNodeClient1.exe

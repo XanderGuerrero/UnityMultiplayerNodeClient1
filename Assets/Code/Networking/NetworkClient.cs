@@ -187,6 +187,26 @@ public class NetworkClient : SocketIOComponent
             DestroyImmediate(ni.gameObject);
         });
 
+        On("playerDied", (E) =>
+        {
+            string id = E.data["id"].ToString();
+            id = id.Trim('"');
+            NetworkIdentity ni = serverObjects[id];
+            ni.gameObject.SetActive(false);
+        });
+
+        On("playerRespawn", (E) =>
+        {
+            string id = E.data["id"].ToString();
+            id = id.Trim('"');
+            float x = E.data["position"]["x"].f;
+            float y = E.data["position"]["y"].f;
+            float z = E.data["position"]["z"].f;
+            NetworkIdentity ni = serverObjects[id];
+            ni.transform.position = new Vector3(x, y, z);
+            ni.gameObject.SetActive(true);
+        });
+
     }
 
 }
