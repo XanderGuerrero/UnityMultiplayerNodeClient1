@@ -47,8 +47,15 @@ public class PlayerManager : MonoBehaviour
     private Transform shotSpawnPoint;
 
     private CharacterController controller;
-
+    private float tiltAmountLaterally = 0;
     public float tilt;
+    private Quaternion targetRotation;
+    private Vector3 targetPosition;
+    float xRotation = 0f;
+    float yRotation = 0f;
+    float zRotation = 0f;
+    float oldmoveX;
+
 
     void Start()
     {
@@ -79,6 +86,7 @@ public class PlayerManager : MonoBehaviour
         {
             checkMovement();
             checkAiming();
+            checkTilt();
         }
     }
 
@@ -102,8 +110,32 @@ public class PlayerManager : MonoBehaviour
         //float vertical = Input.GetAxis("Vertical");
         //rb.MovePosition(new Vector3(Linputs.x, 0.0f, Linputs.y) * speed * Time.deltaTime);
         //rb.MovePosition(transform.position + transform.forward * Time.deltaTime);
-        rb.MovePosition(transform.position + (transform.right * Linputs.x + transform.forward * Mathf.Clamp( Linputs.y, 0, 1)) * 1 * speed);
-       // rb.rotation = Quaternion.Euler(15f, 0.0f, 0f);
+
+
+
+
+
+        //rb.MovePosition(transform.position + (transform.right * Linputs.x + transform.forward * Mathf.Clamp( Linputs.y, 0, 1)) * 1 * speed);
+
+        //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y;
+
+
+        ////if the user is pressing left or right
+        //if (move.x > .6f || move.x <-.6f)
+        //{
+        //    //tilt the ship without moving in the y direction
+        //    move = new Vector3(move.x, transform., move.z);
+        //    rb.MovePosition(transform.position + move);
+        //}
+        rb.MovePosition(transform.position + move);
+        //Debug.Log("x : " + move.x);
+        //Debug.Log("x : " + move.x);
+        //transform.localRotation = Quaternion.Euler(xRotation * speed, yRotation * speed, 0f);
+        //move.x = 0;
+        Debug.Log("Linputs : " + Linputs.x);
+        // rb.rotation = Quaternion.Euler(15f, 0.0f, 0f);
 
         //if movement is left or right, tilt the ship
 
@@ -163,6 +195,26 @@ public class PlayerManager : MonoBehaviour
     }
 
 
+
+    private void Awake()
+    {
+        targetRotation = Quaternion.identity;
+    }
+
+    private void checkTilt()
+    {
+        Vector3 Linputs = InputManager.MainLeftJoystick();
+        zRotation = Linputs.x;
+        tiltAmountLaterally = Mathf.SmoothDamp(tiltAmountLaterally, 20 * zRotation, ref tiltAmountLaterally, 0.1f);
+        //transform.localRotation = Quaternion.Euler( 
+        //    new Vector3(transform.rotation.x, transform.rotation.y, tiltAmountLaterally)
+        //    );
+        //Debug.Log("tiltAmountLaterally : " + tiltAmountLaterally);
+        transform.Rotate(Vector3.forward, -tiltAmountLaterally);
+    }
+
+
+
     private void checkAiming()
     {
 
@@ -171,7 +223,7 @@ public class PlayerManager : MonoBehaviour
 
 
         //get input
-        Vector3 Linputs = InputManager.MainLeftJoystick();
+        //Vector3 Linputs = InputManager.MainLeftJoystick();
         Vector3 Rinputs = InputManager.MainRightJoystick();
 
         //Quaternion currentRotation = transform.rotation;
@@ -184,34 +236,66 @@ public class PlayerManager : MonoBehaviour
         //this worked somewhat but difficult to control once the rotation has changed
         //transform.Rotate(new Vector3(Input.GetAxis("K_MainVertical"), Input.GetAxis("K_MainHorizontal"), 0f));
 
+        xRotation -= Rinputs.y;
+        //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        yRotation += Rinputs.x;
+        //yRotation = Mathf.Clamp(-90f, yRotation, 90f);
 
+
+        //Vector3 euler = transform.localEulerAngles;
+        //euler.z = Mathf.Lerp(euler.z, zRotation, 10f * Time.deltaTime);
+        //Vector3 euler = transform.localEulerAngles;
+        //euler.z = Mathf.Lerp(euler.z, zRotation * 10, 2.0f * Time.deltaTime);
+        //euler.z = Mathf.Clamp(euler.z, -10, 10);
+        //transform.localEulerAngles = euler;
+        //Debug.Log("euler: " + euler.z);
+        //Debug.Log("transform.localEulerAngles.z: " + transform.localEulerAngles.z);
+
+        //float tilt = zRotation - transform.position.x;
+
+        //targetRotation = Quaternion.RotateTowards(targetRotation, Quaternion.Euler(0f, 0f, -tilt ), 100f * Time.deltaTime);
+
+        transform.localRotation = Quaternion.Euler(xRotation * speed, yRotation * speed, rb.rotation.z);
+
+        //rb.MoveRotation(transform.localRotation);
+        //transform.Rotate(new Vector3(0,0, transform.rotation.z),  5f * -zRotation);
+        // increase 10.0f to rotate the ship faster, decrease it to rotate slower
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, 0f, zRotation * 10), 10.0f * Time.deltaTime);
+        //this.transform.Rotate(Vector3.up * Rinputs.x);
+        //Debug.Log(euler.z);
+        //transform.localEulerAngles = euler;
+
+
+
+        //8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         //pitch and yaw code
-        Vector3 moveVector = transform.forward * baseSpeed;
+        //Vector3 moveVector = transform.forward * baseSpeed;
 
-        //moveVector.z = rb.velocity.x * -tilt;
-        //Debug.Log(moveVector);
-        Vector3 yaw = Rinputs.x * transform.right * rotSpeedX * Time.deltaTime;
-        Vector3 pitch = Rinputs.y * transform.up * rotSpeedY * Time.deltaTime;
-        Vector3 dir = yaw + pitch;
-        //dont let player go too far up or down, add the direction to move vector
-        float MaxX = Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
-        //Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
-        //if (MaxX < 90 && MaxX > 70 || MaxX > 270 && MaxX < 290)
-        //{
+        ////moveVector.z = rb.velocity.x * -tilt;
+        ////Debug.Log(moveVector);
+        //Vector3 yaw = Rinputs.x * transform.right * rotSpeedX * Time.deltaTime;
+        //Vector3 pitch = Rinputs.y * transform.up * rotSpeedY * Time.deltaTime;
+        //Vector3 dir = yaw + pitch;
+        ////dont let player go too far up or down, add the direction to move vector
+        //float MaxX = Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
+        ////Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
+        ////if (MaxX < 90 && MaxX > 70 || MaxX > 270 && MaxX < 290)
+        ////{
 
 
+        ////}
+        ////else
+        ////{
+        //    moveVector += dir;
+
+        //    transform.rotation = Quaternion.LookRotation(moveVector);
+        //transform.Translate(moveVector);
         //}
-        //else
-        //{
-            moveVector += dir;
-
-            transform.rotation = Quaternion.LookRotation(moveVector);
-            //transform.Translate(moveVector);
-        //}
+        //8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         //transform.position -= transform.forward * Time.deltaTime * speed;
         //force = new Vector3(Linputs.x, 0.0F, Linputs.y);
         //rb.AddRelativeForce(force * 1000f);
-       
+
 
 
         //float h = horizontalSpeed * Input.GetAxis("Mouse X");
