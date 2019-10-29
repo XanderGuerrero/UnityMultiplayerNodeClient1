@@ -121,20 +121,51 @@ public class PlayerManager : MonoBehaviour
 
         Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y;
 
+        if((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < 0.2f) && (Mathf.Abs(Linputs.y) < 0.2f))
+        {
+            Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
+            move = new Vector3(move.x, move.y - move.y, move.z);
+            rb.MovePosition(transform.position + move);
 
-        ////if the user is pressing left or right
-        //if (move.x > .6f || move.x <-.6f)
-        //{
-        //    //tilt the ship without moving in the y direction
-        //    move = new Vector3(move.x, transform., move.z);
-        //    rb.MovePosition(transform.position + move);
+        }
+        if ((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < 0.2f) && Linputs.y == 0f)
+        {
+            Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
+            move = new Vector3(move.x, move.y - move.y, move.z);
+            rb.MovePosition(transform.position + move);
+
+        }
+        if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) > 0.2f))
+        {
+            Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
+            move = new Vector3(move.x, ++move.y / 2, move.z);
+            rb.MovePosition(transform.position + move);
+
+        }
+        if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) < -0.2f))
+        {
+            Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing udown: " + Linputs.y);
+            move = new Vector3(move.x, --move.y / 2, move.z);
+            rb.MovePosition(transform.position + move);
+
+        }
+        if ((Mathf.Abs(Linputs.x) < 0.2f && Mathf.Abs(Linputs.y) > 0.2f))
+        {
+            rb.MovePosition(transform.position + move);
+        }
+            ////if the user is pressing left or right
+            //if (move.x > .6f || move.x <-.6f)
+            //{
+            //    //tilt the ship without moving in the y direction
+            //    move = new Vector3(move.x, transform., move.z);
+   
         //}
-        rb.MovePosition(transform.position + move);
+        //rb.MovePosition(transform.position + move);
         //Debug.Log("x : " + move.x);
         //Debug.Log("x : " + move.x);
         //transform.localRotation = Quaternion.Euler(xRotation * speed, yRotation * speed, 0f);
         //move.x = 0;
-        Debug.Log("Linputs : " + Linputs.x);
+        Debug.Log("Linputs : " + Mathf.Abs(Linputs.x));
         // rb.rotation = Quaternion.Euler(15f, 0.0f, 0f);
 
         //if movement is left or right, tilt the ship
