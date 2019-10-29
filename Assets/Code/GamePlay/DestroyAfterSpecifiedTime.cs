@@ -19,11 +19,11 @@ public class DestroyAfterSpecifiedTime : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
-
-        networkIdentity.GetSocket().Emit("CollisionDestory", new JSONObject(JsonUtility.ToJson(new IdData()
+        Debug.Log("this.networkIdentity.GetID(): " + this.networkIdentity.GetID());
+        networkIdentity.GetSocket().Emit("BulletDestory", new JSONObject(JsonUtility.ToJson(new IdData()
         {
-            //this bullets id will be sent to server
-            id = networkIdentity.GetID()
+        //this bullets id will be sent to server
+            id = this.networkIdentity.GetID()
 
         })));
 

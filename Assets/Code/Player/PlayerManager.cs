@@ -119,36 +119,41 @@ public class PlayerManager : MonoBehaviour
 
         //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y;
+        Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y * 3;
 
+        //move left or right with no y movement
         if((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < 0.2f) && (Mathf.Abs(Linputs.y) < 0.2f))
         {
             Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
-            move = new Vector3(move.x, move.y - move.y, move.z);
+            move = new Vector3(move.x*1.5f, move.y - move.y, move.z);
             rb.MovePosition(transform.position + move);
 
         }
+        //move left or right with no y movement
         if ((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < 0.2f) && Linputs.y == 0f)
         {
             Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
+            move = new Vector3(move.x*1.5f, move.y - move.y, move.z);
+            rb.MovePosition(transform.position + move);
+
+        }
+        //move diagonally up
+        if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) > 0.2f))
+        {
+            Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
             move = new Vector3(move.x, move.y - move.y, move.z);
             rb.MovePosition(transform.position + move);
 
         }
-        if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) > 0.2f))
-        {
-            Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
-            move = new Vector3(move.x, ++move.y / 2, move.z);
-            rb.MovePosition(transform.position + move);
-
-        }
+        //move diagonally down
         if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) < -0.2f))
         {
             Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing udown: " + Linputs.y);
-            move = new Vector3(move.x, --move.y / 2, move.z);
+            move = new Vector3(move.x, move.y - move.y, move.z);
             rb.MovePosition(transform.position + move);
 
         }
+        //move forward
         if ((Mathf.Abs(Linputs.x) < 0.2f && Mathf.Abs(Linputs.y) > 0.2f))
         {
             rb.MovePosition(transform.position + move);
@@ -165,7 +170,7 @@ public class PlayerManager : MonoBehaviour
         //Debug.Log("x : " + move.x);
         //transform.localRotation = Quaternion.Euler(xRotation * speed, yRotation * speed, 0f);
         //move.x = 0;
-        Debug.Log("Linputs : " + Mathf.Abs(Linputs.x));
+        //Debug.Log("Linputs : " + Mathf.Abs(Linputs.x));
         // rb.rotation = Quaternion.Euler(15f, 0.0f, 0f);
 
         //if movement is left or right, tilt the ship
@@ -271,7 +276,7 @@ public class PlayerManager : MonoBehaviour
         //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         yRotation += Rinputs.x;
         //yRotation = Mathf.Clamp(-90f, yRotation, 90f);
-
+        xRotation = Mathf.Clamp(xRotation, -80, 80);
 
         //Vector3 euler = transform.localEulerAngles;
         //euler.z = Mathf.Lerp(euler.z, zRotation, 10f * Time.deltaTime);
@@ -286,7 +291,7 @@ public class PlayerManager : MonoBehaviour
 
         //targetRotation = Quaternion.RotateTowards(targetRotation, Quaternion.Euler(0f, 0f, -tilt ), 100f * Time.deltaTime);
 
-        transform.localRotation = Quaternion.Euler(xRotation * speed, yRotation * speed, rb.rotation.z);
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation * speed, rb.rotation.z);
 
         //rb.MoveRotation(transform.localRotation);
         //transform.Rotate(new Vector3(0,0, transform.rotation.z),  5f * -zRotation);

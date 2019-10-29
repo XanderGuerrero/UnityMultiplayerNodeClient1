@@ -70,6 +70,7 @@
     <Compile Include="Assets\48 Particle Effect Pack\ShurikenEffectEditor\csShurikenEffectChanger.cs" />
     <Compile Include="Assets\48 Particle Effect Pack\ShurikenEffectEditor\csShurikenEffectEditor.cs" />
     <Compile Include="Assets\Code\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Code\Camera\CameraFollowDrone.cs" />
     <Compile Include="Assets\Code\Camera\CameraMotor.cs" />
     <Compile Include="Assets\Code\GamePlay\CollisionDestory.cs" />
     <Compile Include="Assets\Code\GamePlay\DestroyAfterSpecifiedTime.cs" />
