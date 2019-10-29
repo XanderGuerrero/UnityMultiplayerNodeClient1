@@ -124,7 +124,7 @@ public class PlayerManager : MonoBehaviour
         //move left or right with no y movement
         if((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < 0.2f) && (Mathf.Abs(Linputs.y) < 0.2f))
         {
-            Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
+            //Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
             move = new Vector3(move.x*1.5f, move.y - move.y, move.z);
             rb.MovePosition(transform.position + move);
 
@@ -132,7 +132,7 @@ public class PlayerManager : MonoBehaviour
         //move left or right with no y movement
         if ((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < 0.2f) && Linputs.y == 0f)
         {
-            Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
+            //Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
             move = new Vector3(move.x*1.5f, move.y - move.y, move.z);
             rb.MovePosition(transform.position + move);
 
@@ -140,7 +140,7 @@ public class PlayerManager : MonoBehaviour
         //move diagonally up
         if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) > 0.2f))
         {
-            Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
+            //Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
             move = new Vector3(move.x, move.y - move.y, move.z);
             rb.MovePosition(transform.position + move);
 
@@ -148,7 +148,7 @@ public class PlayerManager : MonoBehaviour
         //move diagonally down
         if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) < -0.2f))
         {
-            Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing udown: " + Linputs.y);
+            //Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing udown: " + Linputs.y);
             move = new Vector3(move.x, move.y - move.y, move.z);
             rb.MovePosition(transform.position + move);
 

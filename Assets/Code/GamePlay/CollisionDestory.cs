@@ -15,7 +15,7 @@ public class CollisionDestory : MonoBehaviour
     {
         //get the identity of the object we collided with
         NetworkIdentity ni = collision.gameObject.GetComponent<NetworkIdentity>();
-        Debug.Log('distance: ' +collision.gameObject.transform.position - collision.other.gameObject.transform.position);
+        Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
         //if the ni is empty or the ni id is not the person who shot the bullet
         if (ni == null || ni.GetID() != whoActivatedMe.GetActivator())        {
             networkIdentity.GetSocket().Emit("CollisionDestory", new JSONObject(JsonUtility.ToJson(new IdData()
