@@ -107,13 +107,13 @@ public class PlayerManager3 : MonoBehaviour
     //    transform.rotation = Quaternion.Euler(0, 0, value);
     //}
 
-    private float movementSpeed = 100f;
+    private float movementSpeed = 50f;
     private void checkMovement()
     {
         Vector3 Linputs = InputManager.MainLeftJoystick();
 
 
-        Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y * speed;
+        //Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y * speed;
 
         //not moving
         if ((InputManager.MainLeftJoystick().x < 0.2f) && (InputManager.MainLeftJoystick().x > -0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
@@ -127,21 +127,23 @@ public class PlayerManager3 : MonoBehaviour
         {
             Debug.Log("foraward: ");
 
-           rb.AddRelativeForce(Vector3.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+           //rb.AddRelativeForce(Vector3.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+            rb.velocity = (rb.transform.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+            Debug.Log("velocity: " + rb.velocity);
         }
         //moving right
         if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f))
         {
             Debug.Log("right: ");
              
-            rb.AddRelativeForce(Vector3.right * InputManager.MainLeftJoystick().y * movementSpeed);
+            rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed);
         }
         //moving left
         if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f))
         {
             Debug.Log("left: ");
 
-            rb.AddRelativeForce(Vector3.left * InputManager.MainLeftJoystick().y * movementSpeed);
+            rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed);
         }
         //move left or right with no y movement
         //if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
