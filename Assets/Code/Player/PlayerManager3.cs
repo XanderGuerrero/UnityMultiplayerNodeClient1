@@ -248,7 +248,7 @@ public class PlayerManager3 : MonoBehaviour
         //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         yRotation += Rinputs.x;
         //zRotation += Linputs.x;
-        xRotation = Mathf.Clamp(xRotation, -80, 80);
+        //xRotation = Mathf.Clamp(xRotation, -80, 80);
 
 
         transform.localRotation = Quaternion.Euler(xRotation * Time.deltaTime * 100, yRotation * 100f * Time.deltaTime, rb.rotation.z);
