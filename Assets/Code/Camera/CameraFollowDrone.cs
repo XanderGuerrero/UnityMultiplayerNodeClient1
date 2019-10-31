@@ -72,9 +72,9 @@ public class CameraFollowDrone : MonoBehaviour
             //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
             yRotation = Rinputs.x;
             //moving camera up and down
-            transform.position = Vector3.SmoothDamp(transform.position, cameraTarget.TransformPoint(behindPosition) + Vector3.up * Linputs.y, ref velocityCameraFollow, 0.05f);
+            transform.position = Vector3.SmoothDamp(transform.position, cameraTarget.TransformPoint(behindPosition) + Vector3.up * Linputs.y, ref velocityCameraFollow, .01f);
             //rotate camera to face players backside
-            transform.rotation = Quaternion.Euler(new Vector3(cameraTarget.localEulerAngles.x + angle, cameraTarget.localEulerAngles.y, 0));
+            transform.rotation = Quaternion.Euler(new Vector3(cameraTarget.localEulerAngles.x + angle, cameraTarget.localEulerAngles.y, cameraTarget.localEulerAngles.z));
             // Quaternion.Euler(rb.rotation.x * speed, player.gameObject.transform.localRotation.y * speed, rb.rotation.z);
             //transform.localRotation = Quaternion.Euler(rb.rotation.x, rb.rotation.y, rb.rotation.z);
             //transform.Rotate(new Vector3(0,0,transform.eulerAngles.z), xRotation * speed);

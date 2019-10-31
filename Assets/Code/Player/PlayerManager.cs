@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Data")]
     [SerializeField]
-    private float speed = 40;
+    private float speed = 5;
 
     [Header("Class References")]
     [SerializeField]
@@ -119,14 +119,14 @@ public class PlayerManager : MonoBehaviour
 
         //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y * 3;
+        Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y * speed;
 
         //move left or right with no y movement
         if((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < 0.2f) && (Mathf.Abs(Linputs.y) < 0.2f))
         {
             //Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
             move = new Vector3(move.x*1.5f, move.y - move.y, move.z);
-            rb.MovePosition(transform.position + move);
+            rb.MovePosition(transform.position + move) ;
 
         }
         //move left or right with no y movement
@@ -158,12 +158,14 @@ public class PlayerManager : MonoBehaviour
         {
             rb.MovePosition(transform.position + move);
         }
-            ////if the user is pressing left or right
-            //if (move.x > .6f || move.x <-.6f)
-            //{
-            //    //tilt the ship without moving in the y direction
-            //    move = new Vector3(move.x, transform., move.z);
-   
+        //rb.MovePosition(transform.position + move);
+
+        ////if the user is pressing left or right
+        //if (move.x > .6f || move.x <-.6f)
+        //{
+        //    //tilt the ship without moving in the y direction
+        //    move = new Vector3(move.x, transform., move.z);
+
         //}
         //rb.MovePosition(transform.position + move);
         //Debug.Log("x : " + move.x);
@@ -241,7 +243,7 @@ public class PlayerManager : MonoBehaviour
     {
         Vector3 Linputs = InputManager.MainLeftJoystick();
         zRotation = Linputs.x;
-        tiltAmountLaterally = Mathf.SmoothDamp(tiltAmountLaterally, 20 * zRotation, ref tiltAmountLaterally, 0.1f);
+        tiltAmountLaterally = Mathf.SmoothDamp(tiltAmountLaterally, 200 * zRotation, ref tiltAmountLaterally, 0.1f);
         //transform.localRotation = Quaternion.Euler( 
         //    new Vector3(transform.rotation.x, transform.rotation.y, tiltAmountLaterally)
         //    );
@@ -291,7 +293,7 @@ public class PlayerManager : MonoBehaviour
 
         //targetRotation = Quaternion.RotateTowards(targetRotation, Quaternion.Euler(0f, 0f, -tilt ), 100f * Time.deltaTime);
 
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation * speed, rb.rotation.z);
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation * 1.5f, rb.rotation.z);
 
         //rb.MoveRotation(transform.localRotation);
         //transform.Rotate(new Vector3(0,0, transform.rotation.z),  5f * -zRotation);
