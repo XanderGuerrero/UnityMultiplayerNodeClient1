@@ -1470,7 +1470,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 6000
-  field of view: 60
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromCameraTarget: {x: 0, y: 0, z: 0}
   velocityCameraFollow: {x: 0, y: 0, z: 0}
-  behindPosition: {x: 0, y: 1.45, z: -14.5}
+  behindPosition: {x: 0, y: 3, z: -14.5}
   angle: 10.5
   speed: 40
   distanceDamp: 0.1

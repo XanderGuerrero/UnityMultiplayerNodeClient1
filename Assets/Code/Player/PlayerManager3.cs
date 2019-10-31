@@ -118,100 +118,63 @@ public class PlayerManager3 : MonoBehaviour
         //not moving
         if ((InputManager.MainLeftJoystick().x < 0.2f) && (InputManager.MainLeftJoystick().x > -0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
         {
-            Debug.Log("not moving: ");
+            //Debug.Log("not moving: ");
             upForce = 0f;
             //rb.AddRelativeForce(Vector3.back,ForceMode.Force);
         }
         //moving forward
         if ((InputManager.MainLeftJoystick().y > 0.2f && InputManager.MainLeftJoystick().y <= 1f))
         {
-            Debug.Log("foraward: ");
+            //Debug.Log("foraward: ");
 
            //rb.AddRelativeForce(Vector3.forward * InputManager.MainLeftJoystick().y * movementSpeed);
             rb.velocity = (rb.transform.forward * InputManager.MainLeftJoystick().y * movementSpeed);
-            Debug.Log("forawardvelocity: " + rb.velocity);
+            //Debug.Log("forawardvelocity: " + rb.velocity);
         }
         //moving right
         if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f))
         {
-            Debug.Log("right: ");
+            //Debug.Log("right: ");
             //Vector3 move = new Vector3(rb.position.x, rb.position.y - rb.position.y, rb.position.z);
             rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed);
             Vector3 vel = rb.velocity;
             vel.y = 0f;
             rb.velocity = vel;
-            Debug.Log("rightvelocity: " + rb.velocity);
+            //Debug.Log("rightvelocity: " + rb.velocity);
         }
         //moving left
         if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f))
         {
-            Debug.Log("left: ");
+            //Debug.Log("left: ");
             rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed);
             Vector3 vel = rb.velocity;
             vel.y = 0f;
             rb.velocity = vel;
-            Debug.Log("leftvelocity: " + rb.velocity);
+            //Debug.Log("leftvelocity: " + rb.velocity);
         }
         //if moving left and up (diagonal)
-        if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f) && (InputManager.MainLeftJoystick().y > 0.2f && InputManager.MainLeftJoystick().y <= 1f))
+        if (((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x >= -1f)) && ((InputManager.MainLeftJoystick().y > 0.2f && InputManager.MainLeftJoystick().y <= 1f)))
         {
-            Debug.Log("left: ");
+            Debug.Log("diagonally up + left: ");
 
-            rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed);
-            rb.velocity = (rb.transform.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+            rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed) + (rb.transform.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+            //rb.velocity = (rb.transform.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+            Vector3 vel = rb.velocity;
+            vel.y = 0f;
+            rb.velocity = vel;
         }
-
-
-
-        //move left or right with no y movement
-        //if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
-        //{
-        //    Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Mathf.Abs(Linputs.y));
-        //    move = new Vector3(move.x, move.y - move.y, move.z);
-        //    //rb.MovePosition(transform.position + move);
-        //    rb.AddRelativeForce((Vector3.right) * InputManager.MainLeftJoystick().x * movementSpeed);
-        //}
-        //if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
-        //{
-        //    Debug.Log("pushing left: " + Mathf.Abs(Linputs.x) + "pushing up: " + Mathf.Abs(Linputs.y));
-        //    move = new Vector3(move.x, move.y - move.y, move.z);
-        //    //rb.MovePosition(transform.position + move);
-        //    rb.AddRelativeForce((move + transform.position) * -InputManager.MainLeftJoystick().x * movementSpeed);
-        //}
-        //move left or right with no y movement
-        //if ((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < -0.2f) && Linputs.y == 0f)
-        //{
-        //    //Debug.Log("pushing laterally: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
-        //    move = new Vector3(move.x * 1.5f, move.y - move.y, move.z);
-        //    rb.MovePosition(transform.position + move);
-
-        //}
-        //move diagonally up
-        //if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) > 0.2f))
-        //{
-        //    //Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Linputs.y);
-        //    move = new Vector3(move.x, move.y - move.y, move.z);
-        //    rb.MovePosition(transform.position + move);
-
-        //}
-        ////move diagonally down
-        //if ((Mathf.Abs(Linputs.x) > 0.2f && (Linputs.y) < -0.2f))
-        //{
-        //    //Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing udown: " + Linputs.y);
-        //    move = new Vector3(move.x, move.y - move.y, move.z);
-        //    rb.MovePosition(transform.position + move);
-
-        //}
-        //move forward
-        //if ((Mathf.Abs(Linputs.x) < 0.2f || Linputs.x > -0.2f && Mathf.Abs(Linputs.y) > 0.2f))
-        //{
-        //    Debug.Log("pushing laterally: " + Linputs.x + "pushing forward: " + Linputs.y);
-        //    move = new Vector3(move.x, move.y, move.z);
-        //    rb.AddRelativeForce(Vector3.forward * Linputs.x * movementSpeed);
-        //}
-        //rb.MovePosition(transform.position + move);
-
-
+        if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f) && ((InputManager.MainLeftJoystick().y > 0.2f && InputManager.MainLeftJoystick().y <= 1f)))
+        {
+            Debug.Log("diagonally up + right: ");
+            //Debug.Log("right: ");
+            //Vector3 move = new Vector3(rb.porightsition.x, rb.position.y - rb.position.y, rb.position.z);
+            rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed) + (rb.transform.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+            //rb.velocity = (rb.transform.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+            Vector3 vel = rb.velocity;
+            vel.y = 0f;
+            rb.velocity = vel;
+            //Debug.Log("rightvelocity: " + rb.velocity);
+        }
     }
 
 
@@ -245,41 +208,12 @@ public class PlayerManager3 : MonoBehaviour
 
 
         xRotation -= Rinputs.y;
-        //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
         yRotation += Rinputs.x;
-        //zRotation += Linputs.x;
-        //xRotation = Mathf.Clamp(xRotation, -80, 80);
+
 
 
         transform.localRotation = Quaternion.Euler(xRotation * Time.deltaTime * 100, yRotation * 100f * Time.deltaTime, rb.rotation.z);
-
-
-        //8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-        //pitch and yaw code
-        //Vector3 moveVector = transform.forward * baseSpeed;
-
-        ////moveVector.z = rb.velocity.x * -tilt;
-        ////Debug.Log(moveVector);
-        //Vector3 yaw = Rinputs.x * transform.right * rotSpeedX * Time.deltaTime;
-        //Vector3 pitch = Rinputs.y * transform.up * rotSpeedY * Time.deltaTime;
-        //Vector3 dir = yaw + pitch;
-        ////dont let player go too far up or down, add the direction to move vector
-        //float MaxX = Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
-        ////Quaternion.LookRotation(moveVector + dir).eulerAngles.x;
-        ////if (MaxX < 90 && MaxX > 70 || MaxX > 270 && MaxX < 290)
-        ////{
-
-
-        ////}
-        ////else
-        ////{
-        //    moveVector += dir;
-
-        //    transform.rotation = Quaternion.LookRotation(moveVector);
-        //transform.Translate(moveVector);
-        //}
-        //8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-        //transform.rotation *= Quaternion.Euler(pitchDelta * Time.deltaTime, yawDelta * Time.deltaTime, rollDelta * Time.deltaTime);
     }
 
 
