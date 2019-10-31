@@ -11,6 +11,8 @@ ScriptsOnlyBuild:
     - NetworkRotation
     - NetworkTransform
     - PlayerManager
+    - PlayerManager2
+    - PlayerManager3
     - ServerObjects
     - WhoActivateMe
     - csDestroyEffect
@@ -77,9 +79,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11212}
     - Class: 114
-      Script: {instanceID: 11262}
+      Script: {instanceID: 11250}
     - Class: 114
-      Script: {instanceID: 11616}
+      Script: {instanceID: 11264}
+    - Class: 114
+      Script: {instanceID: 11618}
+    - Class: 114
+      Script: {instanceID: 13972}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 135
@@ -395,7 +401,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 8fa941ba148cff396a8f4e4fe81684bf
+      Hash: e4cbd98606de56fb0af747cfca21ede9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollowDrone
@@ -519,6 +525,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkClient
+  - hash:
+      serializedVersion: 2
+      Hash: 07dfc46daf452eb7656140abfcd6d963
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerManager2
   - hash:
       serializedVersion: 2
       Hash: c60b3fd2caccd5d735b80641c48f8e42
@@ -651,6 +663,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollow
+  - hash:
+      serializedVersion: 2
+      Hash: 4d7a7ea1abcbe3fc3414c1bf4b7c3b6d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerManager3
   platform: 5
   scenePathNames:
   - Assets/Scenes/Tutorial.unity

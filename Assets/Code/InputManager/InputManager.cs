@@ -55,7 +55,7 @@ public static class InputManager
     public static float LeftJoyStickHorizontal()
     {
         float r = 0.0f;
-        r = Input.GetAxisRaw("J_MainHorizontal");
+        r += Input.GetAxis("J_MainHorizontal");
 
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }

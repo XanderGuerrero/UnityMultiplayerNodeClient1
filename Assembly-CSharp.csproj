@@ -83,6 +83,7 @@
     <Compile Include="Assets\Code\Networking\NetworkTransform.cs" />
     <Compile Include="Assets\Code\Player\PlayerManager.cs" />
     <Compile Include="Assets\Code\Player\PlayerManager2.cs" />
+    <Compile Include="Assets\Code\Player\PlayerManager3.cs" />
     <Compile Include="Assets\Code\Scriptable\ServerObjects.cs" />
     <Compile Include="Assets\Code\Utility\Attributes\GreyOut.cs" />
     <Compile Include="Assets\Code\Utility\CoolDown.cs" />

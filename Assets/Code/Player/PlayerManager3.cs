@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager2 : MonoBehaviour
+public class PlayerManager3 : MonoBehaviour
 {
 
     private float baseSpeed = 1f;
@@ -55,7 +55,11 @@ public class PlayerManager2 : MonoBehaviour
     float yRotation = 0f;
     float zRotation = 0f;
     float oldmoveX;
-
+    public float upForce;
+    public float downForce;
+    public float forwardForce;
+    public float leftForce;
+    public float rightForce;
 
     void Start()
     {
@@ -80,13 +84,14 @@ public class PlayerManager2 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!screenRect.Contains(Input.mousePosition))
-            return;
+        //if (!screenRect.Contains(Input.mousePosition))
+        //    return;
         if (networkIdentity.IsControlling())
         {
             checkMovement();
             checkAiming();
             checkTilt();
+            rb.AddRelativeForce(Vector3.up * upForce);
         }
     }
 
@@ -102,7 +107,7 @@ public class PlayerManager2 : MonoBehaviour
     //    transform.rotation = Quaternion.Euler(0, 0, value);
     //}
 
-    private float movementSpeed = 500f;
+    private float movementSpeed = 100f;
     private void checkMovement()
     {
         Vector3 Linputs = InputManager.MainLeftJoystick();
@@ -110,21 +115,49 @@ public class PlayerManager2 : MonoBehaviour
 
         Vector3 move = transform.right * Linputs.x + transform.forward * Linputs.y * speed;
 
+        //not moving
+        if ((InputManager.MainLeftJoystick().x < 0.2f) && (InputManager.MainLeftJoystick().x > -0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
+        {
+            Debug.Log("not moving: ");
+            upForce = 0f;
+            //rb.AddRelativeForce(Vector3.back,ForceMode.Force);
+        }
+        //moving forward
+        if ((InputManager.MainLeftJoystick().y > 0.2f && InputManager.MainLeftJoystick().y <= 1f))
+        {
+            Debug.Log("foraward: ");
+
+           rb.AddRelativeForce(Vector3.forward * InputManager.MainLeftJoystick().y * movementSpeed);
+        }
+        //moving right
+        if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f))
+        {
+            Debug.Log("right: ");
+             
+            rb.AddRelativeForce(Vector3.right * InputManager.MainLeftJoystick().y * movementSpeed);
+        }
+        //moving left
+        if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f))
+        {
+            Debug.Log("left: ");
+
+            rb.AddRelativeForce(Vector3.left * InputManager.MainLeftJoystick().y * movementSpeed);
+        }
         //move left or right with no y movement
-        if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
-        {
-            Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Mathf.Abs(Linputs.y));
-            move = new Vector3(move.x, move.y - move.y, move.z);
-            //rb.MovePosition(transform.position + move);
-            rb.AddRelativeForce((Vector3.right) * InputManager.MainLeftJoystick().x * movementSpeed);
-        }
-        if (( InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
-        {
-            Debug.Log("pushing left: " + Mathf.Abs(Linputs.x) + "pushing up: " + Mathf.Abs(Linputs.y));
-            move = new Vector3(move.x, move.y - move.y, move.z);
-            //rb.MovePosition(transform.position + move);
-            rb.AddRelativeForce(( move + transform.position) * -InputManager.MainLeftJoystick().x * movementSpeed);
-        }
+        //if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
+        //{
+        //    Debug.Log("pushing right: " + Mathf.Abs(Linputs.x) + "pushing up: " + Mathf.Abs(Linputs.y));
+        //    move = new Vector3(move.x, move.y - move.y, move.z);
+        //    //rb.MovePosition(transform.position + move);
+        //    rb.AddRelativeForce((Vector3.right) * InputManager.MainLeftJoystick().x * movementSpeed);
+        //}
+        //if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().y < 0.2f && InputManager.MainLeftJoystick().y > -0.2f))
+        //{
+        //    Debug.Log("pushing left: " + Mathf.Abs(Linputs.x) + "pushing up: " + Mathf.Abs(Linputs.y));
+        //    move = new Vector3(move.x, move.y - move.y, move.z);
+        //    //rb.MovePosition(transform.position + move);
+        //    rb.AddRelativeForce((move + transform.position) * -InputManager.MainLeftJoystick().x * movementSpeed);
+        //}
         //move left or right with no y movement
         //if ((Mathf.Abs(Linputs.x) > 0.2f || Mathf.Abs(Linputs.x) < -0.2f) && Linputs.y == 0f)
         //{

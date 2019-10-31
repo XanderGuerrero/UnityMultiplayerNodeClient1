@@ -76,11 +76,11 @@ public class NetworkRotation : MonoBehaviour
         networkIdentity.GetSocket().Emit("updateRotation", new JSONObject(JsonUtility.ToJson(player)));
     }
 
-    void OnGUI()
-    {
-        GUILayout.Label("send position data: " + player.shipTiltRotation);
-        //GUILayout.Label("send position data: " + player.position.y);
-        //GUILayout.Label("send position data: " + player.position.z);
-    }
+    //void OnGUI()
+    //{
+    //    GUILayout.Label("send position data: " + player.shipTiltRotation);
+    //    //GUILayout.Label("send position data: " + player.position.y);
+    //    //GUILayout.Label("send position data: " + player.position.z);
+    //}
 
 }
