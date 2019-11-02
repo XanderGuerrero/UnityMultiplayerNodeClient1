@@ -7,7 +7,7 @@ using System;
 public class NetworkClient : SocketIOComponent
 {
 
-
+    public const float SERVER_UPDATE_TIME = 10;
     [Header("Network Client")]
     [SerializeField]
     private Transform networkContainer;
@@ -144,6 +144,8 @@ public class NetworkClient : SocketIOComponent
             float z = E.data["position"]["z"].f;
             //Debug.Log("Z :" + z);
             Debug.Log("server wants us to spawn a " + name);
+            float speed = E.data["speed"].f;
+            Debug.Log("server spawn bullet speed " + speed);
 
             if (!serverObjects.ContainsKey(id))
             {
@@ -173,6 +175,10 @@ public class NetworkClient : SocketIOComponent
 
                     WhoActivateMe whoActivateMe = spawnedObject.GetComponent<WhoActivateMe>();
                     whoActivateMe.SetActivator ( activator);
+
+                    Projectile projectile = spawnedObject.GetComponent<Projectile>();
+                    projectile.Direction = new Vector3(directionX, directionY, directionZ);
+                    projectile.Speed = speed;
                 }
                 serverObjects.Add(id, ni);
             }

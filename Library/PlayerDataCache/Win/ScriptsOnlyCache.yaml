@@ -13,6 +13,7 @@ ScriptsOnlyBuild:
     - PlayerManager
     - PlayerManager2
     - PlayerManager3
+    - Projectile
     - ServerObjects
     - WhoActivateMe
     - csDestroyEffect
@@ -127,6 +128,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11548}
     - Class: 114
       Script: {instanceID: 11620}
+    - Class: 114
+      Script: {instanceID: 27856}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -718,6 +721,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollow
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Projectile
   platform: 5
   scenePathNames:
   - Assets/Scenes/Tutorial.unity
