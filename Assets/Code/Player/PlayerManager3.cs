@@ -188,7 +188,7 @@ public class PlayerManager3 : MonoBehaviour
     {
         Vector3 Linputs = InputManager.MainLeftJoystick();
         zRotation = Linputs.x;
-        tiltAmountLaterally = Mathf.SmoothDamp(tiltAmountLaterally, 40 * zRotation, ref tiltAmountLaterally, 0.1f);
+        tiltAmountLaterally = Mathf.SmoothDamp(tiltAmountLaterally, 90 * zRotation, ref tiltAmountLaterally, 0.1f);
 
         transform.Rotate(Vector3.forward, -tiltAmountLaterally);
     }

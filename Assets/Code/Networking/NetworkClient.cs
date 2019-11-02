@@ -208,7 +208,10 @@ public class NetworkClient : SocketIOComponent
         });
 
     }
-
+    public void AttemptToJoinLobby()
+    {
+        Emit("joinGame");
+    }
 }
 
 [Serializable]

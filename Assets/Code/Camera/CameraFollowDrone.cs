@@ -35,16 +35,12 @@ public class CameraFollowDrone : MonoBehaviour
             if (NetworkClient.ClientId != string.Empty)
             {
                 player = GameObject.Find("/[Server Spawned Object]/Player(" + NetworkClient.ClientId + ")");
-                
-                //Debug.Log("NetworkClient.ClientId:" + NetworkClient.ClientId);
-                //Debug.Log("CAMERA:" + player.name);
+
                 if (player != null)
                 {
                     cameraTarget = player.transform;
                     rb = player.GetComponent<Rigidbody>();
-                    //this.transform.SetParent(cameraTarget);
-                    //this.transform.localPosition = -Vector3.forward * 15 + Vector3.up * 10;
-                    //this.transform.localEulerAngles = new Vector3(12.5f, 0, 0);
+
                     firstTime = false;
                 }
             }
@@ -57,15 +53,6 @@ public class CameraFollowDrone : MonoBehaviour
         Vector3 Linputs = InputManager.MainLeftJoystick();
         Vector3 Rinputs = InputManager.MainRightJoystick();
 
-        //Quaternion currentRotation = transform.rotation;
-        //if (InputManager.MainRightJoystick() == Vector3.zero)
-        //{
-        //    transform.rotation = Quaternion.RotateTowards(currentRotation, startRotation, Time.deltaTime * rotateSpeed);
-        //}
-        //Quaternion.LookRotation(new Vector3(Input.GetAxis("K_MainVertical"), Input.GetAxis("K_MainHorizontal"),0f));
-
-        //this worked somewhat but difficult to control once the rotation has changed
-        //transform.Rotate(new Vector3(Input.GetAxis("K_MainVertical"), Input.GetAxis("K_MainHorizontal"), 0f));
         if (player != null)
         {
             xRotation = Rinputs.y;
@@ -77,11 +64,6 @@ public class CameraFollowDrone : MonoBehaviour
             //transform.rotation = Quaternion.Euler(new Vector3(cameraTarget.localEulerAngles.x + angle, player.transform.localEulerAngles.y, player.transform.localEulerAngles.z));
             transform.LookAt(player.transform, player.transform.up);
 
-
-            //transform.rotation = Quaternion.Euler(new Vector3(cameraTarget.localEulerAngles.x + angle, cameraTarget.localEulerAngles.y, cameraTarget.localEulerAngles.z));
-            // Quaternion.Euler(rb.rotation.x * speed, player.gameObject.transform.localRotation.y * speed, rb.rotation.z);
-            //transform.localRotation = Quaternion.Euler(rb.rotation.x, rb.rotation.y, rb.rotation.z);
-            //transform.Rotate(new Vector3(0,0,transform.eulerAngles.z), xRotation * speed);
         }
     }
 }
