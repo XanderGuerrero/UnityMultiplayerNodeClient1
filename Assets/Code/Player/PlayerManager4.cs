@@ -142,13 +142,13 @@ public class PlayerManager4 : MonoBehaviour
         if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f))
         {
             Debug.Log("foraward: ");
-            upForce = 2250;
+            upForce = 2000;
         }
         ////moving left
         if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f))
         {
             Debug.Log("left: ");
-            upForce = 2250;
+            upForce = 2000;
         }
 
 
