@@ -213,6 +213,14 @@ public class NetworkClient : SocketIOComponent
             ni.gameObject.SetActive(true);
         });
 
+        On("loadGame", (E) =>
+        {
+            Debug.Log(message: "Switching to game");
+            SceneManagementManager.Instance.LoadLevel(SceneList.LEVEL, onLevelLoaded: (levelName) =>{
+                SceneManagementManager.Instance.UnLoadLevel(SceneList.MAIN_MENU);
+            });
+        });
+
     }
     public void AttemptToJoinLobby()
     {
