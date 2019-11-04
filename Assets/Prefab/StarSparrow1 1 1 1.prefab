@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5669255926416778064}
   - component: {fileID: -6620195504048400586}
   - component: {fileID: 2371645264971208761}
+  - component: {fileID: 4546976778045933670}
   m_Layer: 0
   m_Name: StarSparrow1 1 1 1
   m_TagString: Untagged
@@ -198,9 +199,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3856053748188236290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00003c43abc3aa844a5ccf795b63dc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossHairs: {fileID: 0}
+  speed: 1
+  networkIdentity: {fileID: 594026060181728883}
+  shotSpawnPoint: {fileID: 3856816170415509030}
+  tilt: 0
+  upForce: 98.1
+  downForce: 0
+  forwardForce: 0
+  leftForce: 0
+  rightForce: 0
+--- !u!114 &4546976778045933670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856053748188236290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c729383a14f6a124b88a7953917c1a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   crossHairs: {fileID: 0}
@@ -237,7 +260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3856816170415509017}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 7.23}
+  m_LocalPosition: {x: 0, y: -0.15, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3857871268353249338}

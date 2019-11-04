@@ -134,22 +134,22 @@ public class PlayerManager3 : MonoBehaviour
         //moving right
         if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f))
         {
-            //Debug.Log("right: ");
+            Debug.Log("right: ");
             //Vector3 move = new Vector3(rb.position.x, rb.position.y - rb.position.y, rb.position.z);
             rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed);
-            Vector3 vel = rb.velocity;
-            vel.y = 0f;
-            rb.velocity = vel;
+            //Vector3 vel = rb.velocity;
+            //vel.y = 0f;
+            //rb.velocity = vel;
             //Debug.Log("rightvelocity: " + rb.velocity);
         }
         //moving left
         if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f))
         {
-            //Debug.Log("left: ");
+            Debug.Log("left: ");
             rb.velocity = (rb.transform.right * InputManager.MainLeftJoystick().x * movementSpeed);
-            Vector3 vel = rb.velocity;
-            vel.y = 0f;
-            rb.velocity = vel;
+            //Vector3 vel = rb.velocity;
+            //vel.y = 0f;
+            //rb.velocity = vel;
             //Debug.Log("leftvelocity: " + rb.velocity);
         }
         //if moving left and up (diagonal)
