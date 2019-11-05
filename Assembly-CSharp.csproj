@@ -89,6 +89,7 @@
     <Compile Include="Assets\Code\Player\PlayerManager3.cs" />
     <Compile Include="Assets\Code\Player\PlayerManager4.cs" />
     <Compile Include="Assets\Code\Scriptable\ServerObjects.cs" />
+    <Compile Include="Assets\Code\UserInterface\GameLobby.cs" />
     <Compile Include="Assets\Code\Utility\Attributes\CoolDown.cs" />
     <Compile Include="Assets\Code\Utility\Attributes\GreyOut.cs" />
     <Compile Include="Assets\Code\Utility\Attributes\MethodExtensions.cs" />
