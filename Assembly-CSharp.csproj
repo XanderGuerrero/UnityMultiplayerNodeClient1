@@ -74,6 +74,7 @@
     <Compile Include="Assets\Code\Camera\CameraMotor.cs" />
     <Compile Include="Assets\Code\GamePlay\CollisionDestory.cs" />
     <Compile Include="Assets\Code\GamePlay\DestroyAfterSpecifiedTime.cs" />
+    <Compile Include="Assets\Code\GamePlay\DestroyExplosion.cs" />
     <Compile Include="Assets\Code\GamePlay\Managers\ApplicationManager.cs" />
     <Compile Include="Assets\Code\GamePlay\Managers\MenuManager.cs" />
     <Compile Include="Assets\Code\GamePlay\Projectile.cs" />

@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - CameraMotor
     - CollisionDestory
     - DestroyAfterSpecifiedTime
+    - DestroyExplosion
     - GameLobby
     - MenuManager
     - NetworkClient
@@ -102,7 +103,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11370}
     - Class: 114
-      Script: {instanceID: 11654}
+      Script: {instanceID: 11656}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -182,7 +183,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11196}
     - Class: 114
-      Script: {instanceID: 11582}
+      Script: {instanceID: 11584}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -213,6 +214,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 54
+      Script: {instanceID: 0}
+    - Class: 64
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
@@ -261,9 +264,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11300}
     - Class: 114
-      Script: {instanceID: 11582}
+      Script: {instanceID: 11554}
     - Class: 114
-      Script: {instanceID: 14164}
+      Script: {instanceID: 11584}
+    - Class: 114
+      Script: {instanceID: 21238}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -366,9 +371,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11300}
     - Class: 114
-      Script: {instanceID: 11582}
+      Script: {instanceID: 11584}
     - Class: 114
-      Script: {instanceID: 11654}
+      Script: {instanceID: 11656}
+    - Class: 114
+      Script: {instanceID: 21238}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -692,7 +699,7 @@ ScriptsOnlyBuild:
     className: WhoActivateMe
   - hash:
       serializedVersion: 2
-      Hash: 6ff5ed642874f4cb395f9d8ce590659c
+      Hash: 9be182b981114b7ed729e92ed29340c8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DestroyAfterSpecifiedTime
@@ -926,6 +933,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMesh
   - hash:
       serializedVersion: 2
+      Hash: 4ebbe7fd31064a9c7183ba5b2e125be3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameLobby
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -992,10 +1005,10 @@ ScriptsOnlyBuild:
     className: CameraFollow
   - hash:
       serializedVersion: 2
-      Hash: 4ebbe7fd31064a9c7183ba5b2e125be3
+      Hash: ae91cb61274117f848372c2d8c2eef28
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: GameLobby
+    className: DestroyExplosion
   platform: 5
   scenePathNames:
   - Assets/Scenes/Intro.unity

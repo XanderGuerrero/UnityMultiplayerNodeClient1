@@ -1816,7 +1816,7 @@ MonoBehaviour:
   pingInterval: 25
   pingTimeout: 60
   networkContainer: {fileID: 1645686665}
-  playerPrefab: {fileID: 3856053748188236290, guid: 0bbe39c931d97b741b929a1559895c34,
+  playerPrefab: {fileID: 4394720533553662703, guid: cab50e9641022a24b960de9c1a5fb267,
     type: 3}
   serverSpawnables: {fileID: 11400000, guid: 9e7622e968b979a4fbe34066e7d8b75d, type: 2}
 --- !u!4 &1882079434
@@ -2221,6 +2221,80 @@ MonoBehaviour:
   angle: 10.5
   speed: 40
   distanceDamp: 0.1
+--- !u!1001 &4393463984522575737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4394720533553662703, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_Name
+      value: PixelMakeVoyager_WithGuns
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394720533553662703, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.15158708
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.988444
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392911740006836015, guid: cab50e9641022a24b960de9c1a5fb267,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 17.438002
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cab50e9641022a24b960de9c1a5fb267, type: 3}
 --- !u!1001 &4495348471442420656
 PrefabInstance:
   m_ObjectHideFlags: 0

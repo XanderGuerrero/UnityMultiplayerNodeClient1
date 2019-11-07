@@ -135,7 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkIdentity: {fileID: 593182670012037070}
   whoActivatedMe: {fileID: 1368521368498905497}
-  Explosion: {fileID: 100000, guid: fabdd45f98921b547b28c84c0818d2a4, type: 3}
 --- !u!114 &8174670821143432568
 MonoBehaviour:
   m_ObjectHideFlags: 0

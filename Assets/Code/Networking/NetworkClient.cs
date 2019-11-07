@@ -187,6 +187,42 @@ public class NetworkClient : SocketIOComponent
             }
         });
 
+
+        On("serverSpawnExplosion", (E) =>
+        {
+            //Debug.Log("about to fire1");
+            string name = E.data["name"].str;
+            name = name.Trim('"');
+            //Debug.Log("NAME :" + name);
+            string id = E.data["id"].ToString();
+            id = id.Trim('"');
+            //Debug.Log("about to fire2");
+            float x = E.data["position"]["x"].f;
+            //Debug.Log("X :" + x);
+            float y = E.data["position"]["y"].f;
+            //Debug.Log("Y :" + y);
+            float z = E.data["position"]["z"].f;
+            //Debug.Log("Z :" + z);
+            Debug.Log("server wants us to spawn a " + name);
+            //float speed = E.data["speed"].f;
+            //Debug.Log("server spawn bullet speed " + speed);
+
+            //make sure object is not already spawned into the game
+            if (!serverObjects.ContainsKey(id))
+            {
+                Debug.Log("about to explode!!!!!!!!!!!!!!!!");
+                ServerObjectData sod = serverSpawnables.GetObjectByName(name);
+                var spawnedObject = Instantiate(sod.Prefab, networkContainer);
+                spawnedObject.transform.position = new Vector3(x, y, z);
+                var ni = spawnedObject.GetComponent<NetworkIdentity>();
+                ni.SetControllerID(id);
+                ni.SetScoketReference(this);
+                //add the obj to the dictinary of objs
+                serverObjects.Add(id, ni);
+            }
+        });
+
+
         On("serverUnspawn", (E) =>
         {
             string id = E.data["id"].ToString();
@@ -227,6 +263,9 @@ public class NetworkClient : SocketIOComponent
         On("lobbyUpdate", (E) => {
             OnGameStateChange.Invoke(E);
         });
+
+
+
 
     }
     public void AttemptToJoinLobby()
@@ -277,4 +316,13 @@ public class IdData
 {
     public string id;
 
+}
+
+[Serializable]
+public class ExplosionData
+{
+    public string id;
+    public string activator;
+    public Position position;
+    public string bulletActivatorID;
 }

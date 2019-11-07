@@ -156,7 +156,7 @@ MonoBehaviour:
   pingInterval: 25
   pingTimeout: 60
   networkContainer: {fileID: 1415771238}
-  playerPrefab: {fileID: 3856053748188236290, guid: 0bbe39c931d97b741b929a1559895c34,
+  playerPrefab: {fileID: 4394720533553662703, guid: cab50e9641022a24b960de9c1a5fb267,
     type: 3}
   serverSpawnables: {fileID: 11400000, guid: 9e7622e968b979a4fbe34066e7d8b75d, type: 2}
 --- !u!4 &48837897
