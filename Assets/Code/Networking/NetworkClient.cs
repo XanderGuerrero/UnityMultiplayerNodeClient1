@@ -315,7 +315,8 @@ public class BulletData
 public class IdData
 {
     public string id;
-
+    public float distance;
+    public string collisionObjectsNetID;
 }
 
 [Serializable]
