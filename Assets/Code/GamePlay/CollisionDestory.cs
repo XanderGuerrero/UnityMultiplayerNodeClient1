@@ -28,8 +28,9 @@ public class CollisionDestory : MonoBehaviour
     {
         //get the identity of the object we collided with
         NetworkIdentity ni = collision.gameObject.GetComponent<NetworkIdentity>();
+        Debug.Log("Obecjt we collided with ID before formatting: " + ni);
         //networkIDofCollidedObject = ni.ToString();
-        if(ni == null)
+        if (ni == null)
         {
             CollisionData.collisionObjectsNetID = "environment";
         }
@@ -46,7 +47,7 @@ public class CollisionDestory : MonoBehaviour
         var Dist = collision.gameObject.transform.position - collision.other.gameObject.transform.position;
         Debug.Log("distance: " + Dist);
 
-        Debug.Log("Obecjt we collided with ID: " + CollisionData.collisionObjectsNetID);
+        Debug.Log("Obecjt we collided with ID after formatting: " + CollisionData.collisionObjectsNetID);
         Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
         
         //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));

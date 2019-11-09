@@ -18,3 +18,6 @@ MonoBehaviour:
       type: 3}
   - Name: Explosion1
     Prefab: {fileID: 100000, guid: fabdd45f98921b547b28c84c0818d2a4, type: 3}
+  - Name: AI_Base
+    Prefab: {fileID: 8931805761701806989, guid: 24a4acd23791a304e82a208690b0ee80,
+      type: 3}
