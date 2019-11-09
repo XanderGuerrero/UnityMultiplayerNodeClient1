@@ -113,7 +113,7 @@ public class PlayerManager4 : MonoBehaviour
         ////moving right & moving left
         if (((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f)) || ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f)))
         {
-            Debug.Log("foraward: ");
+            //Debug.Log("foraward: ");
             rb.AddRelativeForce(Vector3.right * InputManager.MainLeftJoystick().x * sideMovementAmount);
             tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, 30 * InputManager.MainLeftJoystick().x, ref tiltAmountVelocity, 0.15f);
         }
@@ -134,20 +134,20 @@ public class PlayerManager4 : MonoBehaviour
         //forward
         if (((InputManager.MainLeftJoystick().y > 0.2f && InputManager.MainLeftJoystick().y <= 1f)) || ((InputManager.MainLeftJoystick().y < -0.2f && InputManager.MainLeftJoystick().y <= -1f)))
         {
-            Debug.Log("foraward: ");
+            //Debug.Log("foraward: ");
             rb.velocity = rb.velocity;
             upForce = 0;
         }
         ////moving right
         if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f))
         {
-            Debug.Log("foraward: ");
+            //Debug.Log("foraward: ");
             upForce = 2000;
         }
         ////moving left
         if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f))
         {
-            Debug.Log("left: ");
+            //Debug.Log("left: ");
             upForce = 2000;
         }
 
@@ -178,7 +178,7 @@ public class PlayerManager4 : MonoBehaviour
         //forward
         if ((InputManager.MainLeftJoystick().y > 0.2f && InputManager.MainLeftJoystick().y <= 1f))
         {
-            Debug.Log("foraward: ");
+            //Debug.Log("foraward: ");
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, Mathf.Lerp(rb.velocity.magnitude, 10.0f, Time.deltaTime * 10f));
         }
         //if not moving
@@ -189,13 +189,13 @@ public class PlayerManager4 : MonoBehaviour
         ////moving right
         if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f))
         {
-            Debug.Log("foraward: ");
+            //Debug.Log("foraward: ");
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, Mathf.Lerp(rb.velocity.magnitude, 10.0f, Time.deltaTime * 10f));
         }
         ////moving left
         if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f))
         {
-            Debug.Log("left: ");
+            //Debug.Log("left: ");
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, Mathf.Lerp(rb.velocity.magnitude, 10.0f, Time.deltaTime * 10f));
         }
     }
@@ -209,20 +209,20 @@ public class PlayerManager4 : MonoBehaviour
         //moving forward
         if ((InputManager.MainLeftJoystick().y > 0.2f && InputManager.MainLeftJoystick().y <= 1f))
         {
-            Debug.Log("foraward: ");
+            //Debug.Log("foraward: ");
             rb.AddRelativeForce(Vector3.forward * InputManager.MainLeftJoystick().y * movementSpeed);
         }
         ////moving right
         if ((InputManager.MainLeftJoystick().x > 0.2f) && (InputManager.MainLeftJoystick().x <= 1f))
         {
-            Debug.Log("foraward: ");
+            //Debug.Log("foraward: ");
             rb.AddRelativeForce(Vector3.right * InputManager.MainLeftJoystick().x * movementSpeed);
             tiltAmountLaterally = Mathf.SmoothDamp(tiltAmountLaterally, 20 * InputManager.MainLeftJoystick().x, ref tiltAmountLaterally, 0.1f);
         }
         ////moving left
         if ((InputManager.MainLeftJoystick().x < -0.2f) && (InputManager.MainLeftJoystick().x <= -1f))
         {
-            Debug.Log("left: ");
+            //Debug.Log("left: ");
             rb.AddRelativeForce(Vector3.right * InputManager.MainLeftJoystick().x * movementSpeed);
             tiltAmountLaterally = Mathf.SmoothDamp(tiltAmountLaterally, 20 * InputManager.MainLeftJoystick().x, ref tiltAmountLaterally, 0.1f);
         }

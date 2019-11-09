@@ -136,7 +136,7 @@ public class NetworkClient : SocketIOComponent
             //Debug.Log("about to fire1");
             string name = E.data["name"].str;
             name = name.Trim('"');
-            //Debug.Log("NAME :" + name);
+           
             string id = E.data["id"].ToString();
             id = id.Trim('"');
             //Debug.Log("about to fire2");
@@ -147,13 +147,15 @@ public class NetworkClient : SocketIOComponent
             float z = E.data["position"]["z"].f;
             //Debug.Log("Z :" + z);
             Debug.Log("server wants us to spawn a " + name);
-
+            Debug.Log("ID :" + id);
 
             if (!serverObjects.ContainsKey(id))
             {
                 //Debug.Log("about to fire4");
                 ServerObjectData sod = serverSpawnables.GetObjectByName(name);
                 var spawnedObject = Instantiate(sod.Prefab, networkContainer);
+                spawnedObject.name = string.Format("{0}({1})", name, id);
+                Debug.Log("Spawned " + spawnedObject.name);
                 spawnedObject.transform.position = new Vector3(x, y, z);
                 var ni = spawnedObject.GetComponent<NetworkIdentity>();
                 ni.SetControllerID(id);

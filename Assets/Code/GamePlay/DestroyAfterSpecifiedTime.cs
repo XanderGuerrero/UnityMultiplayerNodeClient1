@@ -37,8 +37,8 @@ public class DestroyAfterSpecifiedTime : MonoBehaviour
         explosionData.position.z = this.transform.position.z.TwoDecimals();
         //explosionData.id = 
 
-        Debug.Log("BULLETS networkIdentity: " + NetworkClient.ClientId);
-        Debug.Log(" explosionData.id: " + this.networkIdentity.GetID());
+        //Debug.Log("BULLETS networkIdentity: " + NetworkClient.ClientId);
+        //Debug.Log(" explosionData.id: " + this.networkIdentity.GetID());
         networkIdentity.GetSocket().Emit("BulletDestory", new JSONObject(JsonUtility.ToJson(explosionData)));
         //{
         //    //this bullets id will be sent to server

@@ -28,7 +28,7 @@ public class CollisionDestory : MonoBehaviour
     {
         //get the identity of the object we collided with
         NetworkIdentity ni = collision.gameObject.GetComponent<NetworkIdentity>();
-        Debug.Log("Obecjt we collided with ID before formatting: " + ni);
+
         //networkIDofCollidedObject = ni.ToString();
         if (ni == null)
         {
@@ -36,6 +36,8 @@ public class CollisionDestory : MonoBehaviour
         }
         else
         {
+            Debug.Log("Obecjt we collided with ID before formatting: " + ni);
+            Debug.Log("Obecjt we collided with ID before formatting: " + ni.GetID());
             string stringBeforeChar = ni.ToString().Substring(ni.ToString().IndexOf('('), ni.ToString().IndexOf(')'));
             stringBeforeChar =  stringBeforeChar.Substring(stringBeforeChar.IndexOf('('), stringBeforeChar.ToString().IndexOf(')'));
             stringBeforeChar = stringBeforeChar.Substring(stringBeforeChar.LastIndexOf('(') + 1);
