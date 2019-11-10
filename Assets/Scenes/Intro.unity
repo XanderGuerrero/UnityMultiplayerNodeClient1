@@ -155,10 +155,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromCameraTarget: {x: 0, y: 0, z: 0}
   velocityCameraFollow: {x: 0, y: 0, z: 0}
-  behindPosition: {x: 0, y: 3, z: -14.5}
+  behindPosition: {x: 0, y: 3, z: -11.5}
   angle: 10.5
   speed: 40
-  distanceDamp: 0.1
+  distanceDamp: 0.15
 --- !u!114 &1610115711
 MonoBehaviour:
   m_ObjectHideFlags: 0
