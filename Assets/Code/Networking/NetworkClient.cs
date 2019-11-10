@@ -18,6 +18,8 @@ public class NetworkClient : SocketIOComponent
     private GameObject playerPrefab;
     [SerializeField]
     private ServerObjects serverSpawnables;
+    //Objectpooler objectPooler;
+
 
     //same value across all instaniate object of type networkClient
     public static string ClientId { get; private set; }
@@ -34,6 +36,7 @@ public class NetworkClient : SocketIOComponent
         //initialize dictionary of game objects
         initialize();
         setUpEvents();
+        //objectPooler = Objectpooler.Instance;
     }
 
     // Update is called once per frame
@@ -154,8 +157,11 @@ public class NetworkClient : SocketIOComponent
                 //Debug.Log("about to fire4");
                 ServerObjectData sod = serverSpawnables.GetObjectByName(name);
                 var spawnedObject = Instantiate(sod.Prefab, networkContainer);
+                //objectPooler.SpawnFromPool(name);
+
                 spawnedObject.name = string.Format("{0}({1})", name, id);
                 Debug.Log("Spawned " + spawnedObject.name);
+                Debug.Log("Position " + new Vector3(x, y, z).ToString());
                 spawnedObject.transform.position = new Vector3(x, y, z);
                 var ni = spawnedObject.GetComponent<NetworkIdentity>();
                 ni.SetControllerID(id);
@@ -271,6 +277,7 @@ public class NetworkClient : SocketIOComponent
 
 
     }
+
     public void AttemptToJoinLobby()
     {
         Emit("joinGame");

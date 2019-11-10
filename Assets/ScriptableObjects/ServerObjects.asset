@@ -16,8 +16,31 @@ MonoBehaviour:
   - Name: Bullet
     Prefab: {fileID: 6600027840678098584, guid: a17385ed3fd33af4db1057baa92f5f1a,
       type: 3}
+    Count: 100
   - Name: Explosion1
     Prefab: {fileID: 100000, guid: fabdd45f98921b547b28c84c0818d2a4, type: 3}
+    Count: 100
   - Name: AI_Base
     Prefab: {fileID: 8931805761701806989, guid: 24a4acd23791a304e82a208690b0ee80,
       type: 3}
+    Count: 100
+  - Name: Asteroid1
+    Prefab: {fileID: 3444519712365807117, guid: 384ec8c1fa04ed84aa35ebb88b42a3a3,
+      type: 3}
+    Count: 100
+  - Name: Asteroid2
+    Prefab: {fileID: 7352941519331823607, guid: 5dee9d1da15e21e47b7300bc60aebe41,
+      type: 3}
+    Count: 100
+  - Name: Mine1
+    Prefab: {fileID: 7180292935619397454, guid: e4bfab61eab529f42b15dde0fde6ea68,
+      type: 3}
+    Count: 100
+  - Name: Mine2
+    Prefab: {fileID: 8892731309450512596, guid: 0f599db6584ed5c4ca43ac2c0d8279d2,
+      type: 3}
+    Count: 100
+  - Name: Missile
+    Prefab: {fileID: 6867125841215783252, guid: 60109b7286f9c3c48b8a45e449a579a5,
+      type: 3}
+    Count: 100

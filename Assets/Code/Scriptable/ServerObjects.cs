@@ -21,4 +21,5 @@ public class ServerObjectData
 {
     public string Name = "New Object";
     public GameObject Prefab;
+    public int Count = 100;
 }

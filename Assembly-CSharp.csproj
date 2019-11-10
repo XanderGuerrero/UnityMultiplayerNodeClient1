@@ -89,6 +89,8 @@
     <Compile Include="Assets\Code\Player\PlayerManager2.cs" />
     <Compile Include="Assets\Code\Player\PlayerManager3.cs" />
     <Compile Include="Assets\Code\Player\PlayerManager4.cs" />
+    <Compile Include="Assets\Code\Scriptable\IPooledObject.cs" />
+    <Compile Include="Assets\Code\Scriptable\Objectpooler.cs" />
     <Compile Include="Assets\Code\Scriptable\ServerObjects.cs" />
     <Compile Include="Assets\Code\UserInterface\GameLobby.cs" />
     <Compile Include="Assets\Code\Utility\Attributes\CoolDown.cs" />
