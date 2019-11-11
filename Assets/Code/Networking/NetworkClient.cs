@@ -325,6 +325,7 @@ public class BulletData
 public class IdData
 {
     public string id;
+    public string name;
     public float distance;
     public string collisionObjectsNetID;
 }

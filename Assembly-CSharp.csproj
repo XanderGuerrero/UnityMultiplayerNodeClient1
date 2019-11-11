@@ -78,6 +78,7 @@
     <Compile Include="Assets\Code\GamePlay\Managers\ApplicationManager.cs" />
     <Compile Include="Assets\Code\GamePlay\Managers\MenuManager.cs" />
     <Compile Include="Assets\Code\GamePlay\Projectile.cs" />
+    <Compile Include="Assets\Code\GamePlay\RandomAsteroidRotator.cs" />
     <Compile Include="Assets\Code\GamePlay\WhoActivateMe.cs" />
     <Compile Include="Assets\Code\InputManager\InputManager.cs" />
     <Compile Include="Assets\Code\InputManager\testInputManager.cs" />
