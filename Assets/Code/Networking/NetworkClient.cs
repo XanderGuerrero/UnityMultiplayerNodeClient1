@@ -4,6 +4,7 @@ using UnityEngine;
 using SocketIO;
 using System;
 
+
 public class NetworkClient : SocketIOComponent
 {
 
@@ -159,7 +160,7 @@ public class NetworkClient : SocketIOComponent
                 var spawnedObject = Instantiate(sod.Prefab, networkContainer);
                 //objectPooler.SpawnFromPool(name);
 
-                spawnedObject.name = string.Format("{0}({1})", name, id);
+                
                 Debug.Log("Spawned " + spawnedObject.name);
                 Debug.Log("Position " + new Vector3(x, y, z).ToString());
                 spawnedObject.transform.position = new Vector3(x, y, z);
@@ -167,11 +168,12 @@ public class NetworkClient : SocketIOComponent
                 ni.SetControllerID(id);
                 ni.SetScoketReference(this);
 
-
+                Debug.Log("If NAME: " + name);
                 //if bullet, apply directions as well
                 if (name == "Bullet")
                 //if (name == "Bullet(Clone)")
                 {
+                    spawnedObject.name = string.Format("{0}({1})", name, id);
                     //Debug.Log("about to fire5");
                     float directionX = E.data["direction"]["x"].f;
                     float directionY = E.data["direction"]["y"].f;
@@ -191,6 +193,29 @@ public class NetworkClient : SocketIOComponent
                     Projectile projectile = spawnedObject.GetComponent<Projectile>();
                     projectile.Direction = new Vector3(directionX, directionY, directionZ);
                     projectile.Speed = speed;
+                }
+                //if Asteroid1, apply tumble and  as well
+                if (name == "Asteroid1")
+                {
+                    Debug.Log("If NAME entered!!!!!!: " + name);
+                    Debug.Log("tumble!!!!!!: " + E.data.ToString());
+                    spawnedObject.name = string.Format("{0}({1})", name, id);
+                    //Debug.Log("about to fire5");
+                    float tumble = E.data["tumble"].f;
+                    Debug.Log("tumble!!!!!!: " + E.data.ToString());
+                    float speed = E.data["speed"].f;
+                    Debug.Log("speed!!!!!!: " + E.data["speed"].f);
+
+
+                    Debug.Log("server spawn Asteroid speed " + speed);
+                    Debug.Log("server spawn Asteroid tumble " + tumble);
+                    spawnedObject.GetComponent<Rigidbody>().angularVelocity = UnityEngine.Random.insideUnitSphere * (tumble);
+                    //spawnedObject.GetComponent<Rigidbody>().velocity = -transform.forward * speed;
+
+                }
+                if (name == "AI_Base")
+                {
+                    spawnedObject.name = string.Format("{0}({1})", name, id);
                 }
                 serverObjects.Add(id, ni);
             }
@@ -291,6 +316,20 @@ public class Player
     public Position position;
     public PlayerRotation rotation;
     public PlayerRotation shipTilt;
+}
+
+
+//to send asteroid data back to the server to use to update the other players screens
+[Serializable]
+public class Asteroid
+{
+    public string id;
+    public Position position;
+    public PlayerRotation rotation;
+    //public PlayerRotation shipTilt;
+
+    public Vector3 angularVelocity;
+    public Vector3 velocity;
 }
 
 [Serializable]

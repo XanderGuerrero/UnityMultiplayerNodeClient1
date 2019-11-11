@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -2483842071143957014}
   - component: {fileID: -6348753606853230145}
   - component: {fileID: 609698935916979958}
+  - component: {fileID: 9172881679677005450}
   m_Layer: 0
   m_Name: Asteroid Lava Blue
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_LocalRotation: {x: 0.000000021855694, y: -0.00000008742278, z: 1.9106855e-15,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -7.89}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3444519712365807117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d9bb712c82ddd1409b92f7c549177f4, type: 3}
   m_Name: 
@@ -138,3 +139,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.81
   m_Center: {x: 0.00000023841858, y: -0.00000023841858, z: -0.0000021457672}
+--- !u!114 &9172881679677005450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444519712365807117}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7f3b835df522c43a3528c6ea645004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oldposition: {x: 0, y: 0, z: 0}
