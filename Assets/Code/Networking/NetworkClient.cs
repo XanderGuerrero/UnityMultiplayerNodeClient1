@@ -20,7 +20,7 @@ public class NetworkClient : SocketIOComponent
     [SerializeField]
     private ServerObjects serverSpawnables;
     //Objectpooler objectPooler;
-
+    float tumble;
 
     //same value across all instaniate object of type networkClient
     public static string ClientId { get; private set; }
@@ -105,11 +105,14 @@ public class NetworkClient : SocketIOComponent
         {
             string id = E.data["id"].ToString();
             id = id.Trim('"');
+            Debug.LogFormat("Data back to the client ID values: ({0}) ", id);
             float x = E.data["position"]["x"].f;
             float y = E.data["position"]["y"].f;
             float z = E.data["position"]["z"].f;
-
-           // Debug.LogFormat("Data back to the client X values: ({0}) ", x);
+            //Debug.LogFormat("Data back to the client X values: ({0}) ", x);
+            //Debug.LogFormat("Data back to the client Y values: ({0}) ", y);
+            //Debug.LogFormat("Data back to the client Z values: ({0}) ", z);
+            // Debug.LogFormat("Data back to the client X values: ({0}) ", x);
             NetworkIdentity ni = serverObjects[id];
             ni.transform.position = new Vector3(x, y, z);
 
@@ -164,6 +167,7 @@ public class NetworkClient : SocketIOComponent
                 Debug.Log("Spawned " + spawnedObject.name);
                 Debug.Log("Position " + new Vector3(x, y, z).ToString());
                 spawnedObject.transform.position = new Vector3(x, y, z);
+                Debug.Log("Position " + spawnedObject.transform.position.ToString());
                 var ni = spawnedObject.GetComponent<NetworkIdentity>();
                 ni.SetControllerID(id);
                 ni.SetScoketReference(this);
@@ -200,15 +204,15 @@ public class NetworkClient : SocketIOComponent
                     Debug.Log("If NAME entered!!!!!!: " + name);
                     Debug.Log("tumble!!!!!!: " + E.data.ToString());
                     spawnedObject.name = string.Format("{0}({1})", name, id);
-                    //Debug.Log("about to fire5");
-                    float tumble = E.data["tumble"].f;
+                    Debug.Log("spawnedObject.name: " + spawnedObject.name);
+                    tumble = E.data["tumble"].f;
                     Debug.Log("tumble!!!!!!: " + E.data.ToString());
-                    float speed = E.data["speed"].f;
-                    Debug.Log("speed!!!!!!: " + E.data["speed"].f);
+                    //float speed = E.data["speed"].f;
+                    //Debug.Log("speed!!!!!!: " + E.data["speed"].f);
 
 
-                    Debug.Log("server spawn Asteroid speed " + speed);
-                    Debug.Log("server spawn Asteroid tumble " + tumble);
+                    //Debug.Log("server spawn Asteroid speed " + speed);
+                    //Debug.Log("server spawn Asteroid tumble " + tumble);
                     spawnedObject.GetComponent<Rigidbody>().angularVelocity = UnityEngine.Random.insideUnitSphere * (tumble);
                     //spawnedObject.GetComponent<Rigidbody>().velocity = -transform.forward * speed;
 
@@ -220,6 +224,9 @@ public class NetworkClient : SocketIOComponent
                 serverObjects.Add(id, ni);
             }
         });
+
+
+   
 
 
         On("serverSpawnExplosion", (E) =>
@@ -306,6 +313,13 @@ public class NetworkClient : SocketIOComponent
     public void AttemptToJoinLobby()
     {
         Emit("joinGame");
+    }
+
+    void OnGUI()
+    {
+        GUILayout.Label("Tumble: " + tumble);
+        GUILayout.Label("Tumble: " + tumble);
+        GUILayout.Label("Tumble: " + tumble);
     }
 }
 

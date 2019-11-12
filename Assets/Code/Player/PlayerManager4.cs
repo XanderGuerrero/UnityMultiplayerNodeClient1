@@ -283,13 +283,13 @@ public class PlayerManager4 : MonoBehaviour
     }
 
 
-    void OnGUI()
-    {
-        GUILayout.Label("RightJoystick " + InputManager.MainRightJoystick().ToString());
-        GUILayout.Label("LeftJoystick " + InputManager.MainLeftJoystick().ToString());
-        GUILayout.Label("Mathf.Abs(MainLeftJoystick.x) " + Mathf.Abs(InputManager.MainLeftJoystick().x));
-        GUILayout.Label("Mathf.Abs(MainLeftJoystick.y) " + Mathf.Abs(InputManager.MainLeftJoystick().y));
-    }
+    //void OnGUI()
+    //{
+    //    GUILayout.Label("RightJoystick " + InputManager.MainRightJoystick().ToString());
+    //    GUILayout.Label("LeftJoystick " + InputManager.MainLeftJoystick().ToString());
+    //    GUILayout.Label("Mathf.Abs(MainLeftJoystick.x) " + Mathf.Abs(InputManager.MainLeftJoystick().x));
+    //    GUILayout.Label("Mathf.Abs(MainLeftJoystick.y) " + Mathf.Abs(InputManager.MainLeftJoystick().y));
+    //}
 
 
     private void checkShooting()
