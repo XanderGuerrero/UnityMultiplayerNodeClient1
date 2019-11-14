@@ -283,13 +283,15 @@ public class PlayerManager4 : MonoBehaviour
     }
 
 
-    //void OnGUI()
-    //{
-    //    GUILayout.Label("RightJoystick " + InputManager.MainRightJoystick().ToString());
-    //    GUILayout.Label("LeftJoystick " + InputManager.MainLeftJoystick().ToString());
-    //    GUILayout.Label("Mathf.Abs(MainLeftJoystick.x) " + Mathf.Abs(InputManager.MainLeftJoystick().x));
-    //    GUILayout.Label("Mathf.Abs(MainLeftJoystick.y) " + Mathf.Abs(InputManager.MainLeftJoystick().y));
-    //}
+    void OnGUI()
+    {
+        GUILayout.Label("Forward direction x " + shotSpawnPoint.forward.x);
+        GUILayout.Label("Forward direction y " + shotSpawnPoint.forward.y);
+        GUILayout.Label("Forward direction z " + shotSpawnPoint.forward.z);
+        //GUILayout.Label("LeftJoystick " + InputManager.MainLeftJoystick().ToString());
+        //GUILayout.Label("Mathf.Abs(MainLeftJoystick.x) " + Mathf.Abs(InputManager.MainLeftJoystick().x));
+        //GUILayout.Label("Mathf.Abs(MainLeftJoystick.y) " + Mathf.Abs(InputManager.MainLeftJoystick().y));
+    }
 
 
     private void checkShooting()
@@ -305,6 +307,8 @@ public class PlayerManager4 : MonoBehaviour
             bulletData.position.x = shotSpawnPoint.position.x.TwoDecimals();
             bulletData.position.y = shotSpawnPoint.position.y.TwoDecimals();
             bulletData.position.z = shotSpawnPoint.position.z.TwoDecimals();
+
+
             bulletData.direction.x = shotSpawnPoint.forward.x;
             bulletData.direction.y = shotSpawnPoint.forward.y;
             bulletData.direction.z = shotSpawnPoint.forward.z;

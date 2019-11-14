@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     public void OnQueue()
     {
+        //call the servers join game event
         SocketReference.Emit("joinGame");
     }
 }
