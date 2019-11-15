@@ -213,6 +213,9 @@ public class NetworkClient : SocketIOComponent
                     float directionY = E.data["direction"]["y"].f;
                     float directionZ = E.data["direction"]["z"].f;
                     float speed = E.data["speed"].f;
+                    float scaleX = E.data["scale"]["x"].f;
+                    float scaleY = E.data["scale"]["y"].f;
+                    float scaleZ = E.data["scale"]["z"].f;
                     Debug.Log("server spawn asteroid speed " + speed);
                     //string activator = E.data["activator"].ToString();
                     //activator = activator.Trim('"');
@@ -232,7 +235,7 @@ public class NetworkClient : SocketIOComponent
                     asteroid.Direction = new Vector3(directionX, directionY, directionZ);
                     asteroid.Speed = speed;
                     asteroid.Tumble = tumble;
-                    asteroid.transform.localScale = new Vector3( UnityEngine.Random.Range(25f, 5), UnityEngine.Random.Range(25f, 5), UnityEngine.Random.Range(25f, 5));
+                    asteroid.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
                     //Rigidbody rb = asteroid.GetComponent<Rigidbody>();
                     //rb.angularVelocity = UnityEngine.Random.insideUnitSphere * (tumble);
                     //rb.velocity = asteroid.Direction * speed * NetworkClient.SERVER_UPDATE_TIME * Time.deltaTime;

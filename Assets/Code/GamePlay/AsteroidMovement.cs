@@ -49,7 +49,7 @@ public class AsteroidMovement : MonoBehaviour
         ///tumble = Random.Range(0.5f, 5).TwoDecimals();
         //Debug.Log("tumble value is :" + tumble);
         rb = GetComponent<Rigidbody>();
-        rb.angularVelocity = Random.insideUnitSphere * (tumble);
+        //rb.angularVelocity = Random.insideUnitSphere * (tumble);
         //rb.velocity = direction * speed * NetworkClient.SERVER_UPDATE_TIME * Time.deltaTime;
         //Vector3 pos = direction * speed * NetworkClient.SERVER_UPDATE_TIME * Time.deltaTime;
         //transform.position += new Vector3(pos.x, pos.y, pos.z);
