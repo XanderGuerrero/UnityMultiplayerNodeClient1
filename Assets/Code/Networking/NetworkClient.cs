@@ -209,13 +209,40 @@ public class NetworkClient : SocketIOComponent
                     Debug.Log("spawnedObject.name: " + spawnedObject.name);
                     tumble = E.data["tumble"].f;
                     Debug.Log("tumble!!!!!!: " + E.data.ToString());
+                    float directionX = E.data["direction"]["x"].f;
+                    float directionY = E.data["direction"]["y"].f;
+                    float directionZ = E.data["direction"]["z"].f;
+                    float speed = E.data["speed"].f;
+                    Debug.Log("server spawn asteroid speed " + speed);
+                    //string activator = E.data["activator"].ToString();
+                    //activator = activator.Trim('"');
                     //float speed = E.data["speed"].f;
                     //Debug.Log("speed!!!!!!: " + E.data["speed"].f);
 
+                    //calculate rotation
+                    float rot = Mathf.Atan2(directionZ, directionX) * Mathf.Rad2Deg;
+                    Vector3 currentRotation = new Vector3(0, 0, rot - 90);
+                    spawnedObject.transform.rotation = Quaternion.Euler(currentRotation);
 
-                    //Debug.Log("server spawn Asteroid speed " + speed);
-                    //Debug.Log("server spawn Asteroid tumble " + tumble);
-                    spawnedObject.GetComponent<Rigidbody>().angularVelocity = UnityEngine.Random.insideUnitSphere * (tumble);
+                    //WhoActivateMe whoActivateMe = spawnedObject.GetComponent<WhoActivateMe>();
+                    //whoActivateMe.SetActivator(activator);
+
+                    AsteroidMovement asteroid = spawnedObject.GetComponent<AsteroidMovement>();
+                    asteroid = spawnedObject.GetComponent<AsteroidMovement>();
+                    asteroid.Direction = new Vector3(directionX, directionY, directionZ);
+                    asteroid.Speed = speed;
+                    asteroid.Tumble = tumble;
+                    asteroid.transform.localScale = new Vector3( UnityEngine.Random.Range(25f, 5), UnityEngine.Random.Range(25f, 5), UnityEngine.Random.Range(25f, 5));
+                    //Rigidbody rb = asteroid.GetComponent<Rigidbody>();
+                    //rb.angularVelocity = UnityEngine.Random.insideUnitSphere * (tumble);
+                    //rb.velocity = asteroid.Direction * speed * NetworkClient.SERVER_UPDATE_TIME * Time.deltaTime;
+                    Debug.Log("server spawn Asteroid Direction X " + E.data["direction"]["x"].f);
+                    Debug.Log("server spawn Asteroid Direction Y " + E.data["direction"]["y"].f);
+                    Debug.Log("server spawn Asteroid Direction Z " + E.data["direction"]["z"].f);
+                    Debug.Log("server spawn Asteroid Direction " + asteroid.Direction.ToString());
+                    Debug.Log("server spawn Asteroid speed " + asteroid.Speed);
+                    Debug.Log("server spawn Asteroid tumble " + asteroid.Tumble);
+                    //spawnedObject.GetComponent<Rigidbody>().angularVelocity = UnityEngine.Random.insideUnitSphere * (tumble);
                     //spawnedObject.GetComponent<Rigidbody>().velocity = -transform.forward * speed;
 
                 }

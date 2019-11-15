@@ -314,7 +314,7 @@ public class PlayerManager4 : MonoBehaviour
             bulletData.direction.z = shotSpawnPoint.forward.z;
             //send the bullet
             networkIdentity.GetSocket().Emit("fireBullet", new JSONObject(JsonUtility.ToJson(bulletData)));
-
+            Debug.Log("fire: ");
         }
     }
 }

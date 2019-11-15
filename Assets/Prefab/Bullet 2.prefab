@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6600027840677800632}
-  - component: {fileID: 6600027840687768444}
-  - component: {fileID: 6488842853715659148}
   - component: {fileID: 593182670012037070}
   - component: {fileID: 6698975977420732902}
   - component: {fileID: 3409728233690725554}
@@ -41,31 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6600027840687768444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6600027840678098584}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d497e14c8a38f49ac502a303de982d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
---- !u!114 &6488842853715659148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6600027840678098584}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db08735561a38424182823d8d175333b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &593182670012037070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +123,6 @@ MonoBehaviour:
   networkIdentity: {fileID: 593182670012037070}
   whoActivatedMe: {fileID: 1368521368498905497}
   timeToExplode: 3
-  Explosion: {fileID: 100000, guid: fabdd45f98921b547b28c84c0818d2a4, type: 3}
 --- !u!114 &1088350650923715
 MonoBehaviour:
   m_ObjectHideFlags: 0
