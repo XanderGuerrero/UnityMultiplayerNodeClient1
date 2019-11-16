@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ApplicationManager
+    - AsteroidCollisionDestory
     - AsteroidMovement
     - CameraFollow
     - CameraFollowDrone
@@ -101,9 +102,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11296}
     - Class: 114
-      Script: {instanceID: 11380}
+      Script: {instanceID: 11382}
     - Class: 114
-      Script: {instanceID: 11666}
+      Script: {instanceID: 11668}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -183,7 +184,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11206}
     - Class: 114
-      Script: {instanceID: 11594}
+      Script: {instanceID: 11596}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -266,9 +267,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11310}
     - Class: 114
-      Script: {instanceID: 11564}
+      Script: {instanceID: 11368}
     - Class: 114
-      Script: {instanceID: 11594}
+      Script: {instanceID: 11566}
+    - Class: 114
+      Script: {instanceID: 11596}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -371,9 +374,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11310}
     - Class: 114
-      Script: {instanceID: 11594}
+      Script: {instanceID: 11368}
     - Class: 114
-      Script: {instanceID: 11666}
+      Script: {instanceID: 11596}
+    - Class: 114
+      Script: {instanceID: 11668}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -575,12 +580,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMeshUI
-  - hash:
-      serializedVersion: 2
-      Hash: 67f4f2d079eb5e51898cce8b1ebb9c50
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AsteroidNetworkTransform
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -899,6 +898,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: MarkerTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 34fbdf5f661d6c82c176078187956393
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AsteroidCollisionDestory
   - hash:
       serializedVersion: 2
       Hash: d791aa6007fa3640be1164ea75bb087d
