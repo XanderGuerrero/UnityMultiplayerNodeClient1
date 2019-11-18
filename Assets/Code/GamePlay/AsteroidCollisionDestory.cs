@@ -11,6 +11,7 @@ public class AsteroidCollisionDestory : MonoBehaviour
     private float dist;
     private IdData CollisionData;
     //private string networkIDofCollidedObject;
+    Rigidbody rb;
 
 
 
@@ -18,6 +19,7 @@ public class AsteroidCollisionDestory : MonoBehaviour
     void Start()
     {
         CollisionData = new IdData();
+        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -40,7 +42,8 @@ public class AsteroidCollisionDestory : MonoBehaviour
             //Debug.Log("gameobject name: " + this.gameObject.name);
             var name = this.gameObject.name.ToString().Substring(0, ni.ToString().IndexOf('('));
             Debug.Log("gameobject name: " + name);
-            if (name == nameOfCollisionObj)
+            //if we collided with another asteroid
+            if (name == nameOfCollisionObj && this.networkIdentity.GetID() != ni.GetID())
             {
                 Debug.Log("Reflect!!!!");
                 print("First point that collided: " + collision.contacts[0].point);
@@ -49,21 +52,30 @@ public class AsteroidCollisionDestory : MonoBehaviour
                 direction.x = direction.x.TwoDecimals();
                 direction.y = direction.y.TwoDecimals();
                 direction.z = direction.z.TwoDecimals();
-                Asteroid newAsteroidDirData = new Asteroid();
-                newAsteroidDirData.direction = direction.normalized;//new Vector3(direction.x, direction.y, direction.z); 
-                newAsteroidDirData.id = this.networkIdentity.GetID();
+
+                Asteroid newAster = new Asteroid();
                 Vector3 newPosition = collision.contacts[0].point;
+                newAster.position = newPosition;
+                newAster.direction = direction.normalized;//new Vector3(direction.x, direction.y, direction.z); 
+                newAster.id = this.networkIdentity.GetID();
+                Debug.Log("newAsteroidDirData.id: " + newAster.id);
+
+                //newAster.rotationX = UnityEngine.Random.RandomRange(.5f, 7);
+                //Debug.Log("newAsteroidDirData.rotation.x: " + newAster.rotationX);
+                //newAster.rotationY = UnityEngine.Random.RandomRange(.5f, 7);
+                //newAster.rotationZ = UnityEngine.Random.RandomRange(.5f, 7);
+                //transform.Rotate(new Vector3(newAsteroidDirData.rotation.x, newAsteroidDirData.rotation.y, newAsteroidDirData.rotation.z) * Time.deltaTime * NetworkClient.SERVER_UPDATE_TIME);
                 //newPosition.x = newPosition.x.TwoDecimals();
                 //newPosition.y = newPosition.y.TwoDecimals();
                 //newPosition.z = newPosition.z.TwoDecimals();
-                newAsteroidDirData.position = newPosition;
+
                 //newAsteroidDirData.position.x = newPosition.x;
                 //newAsteroidDirData.position.y = newPosition.y;
                 //newAsteroidDirData.position.z = newPosition.z;
                 //send new position, new direction, new speed, name and id, tumble value back
                 //braodcast to all clients by calling a new event On("updateAstroidmovement")
                 Debug.Log("CALL AsteroidUpdateDirection!!!!");
-                networkIdentity.GetSocket().Emit("AsteroidUpdateDirection", new JSONObject(JsonUtility.ToJson(newAsteroidDirData)));
+                networkIdentity.GetSocket().Emit("AsteroidUpdateDirection", new JSONObject(JsonUtility.ToJson(newAster)));
             }
             else
             {
