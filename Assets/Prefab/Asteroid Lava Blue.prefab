@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 609698935916979958}
   - component: {fileID: -3337457806361245366}
   - component: {fileID: -628180852227869864}
+  - component: {fileID: 3665424740573926649}
   m_Layer: 0
   m_Name: Asteroid Lava Blue
   m_TagString: Untagged
@@ -143,6 +144,9 @@ MonoBehaviour:
   tumble: 0
   direction: {x: 0, y: 0, z: 0}
   speed: 0
+  RotationX: 0
+  RotationY: 0
+  RotationZ: 0
 --- !u!114 &-628180852227869864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,4 +160,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkIdentity: {fileID: -5156081922263861110}
-  whoActivatedMe: {fileID: 0}
+--- !u!114 &3665424740573926649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444519712365807117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894509988bf81ca438cbace4f4244118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

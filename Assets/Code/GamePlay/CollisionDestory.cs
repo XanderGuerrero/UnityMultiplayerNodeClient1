@@ -33,6 +33,8 @@ public class CollisionDestory : MonoBehaviour
         if (ni == null)
         {
             CollisionData.collisionObjectsNetID = "environment";
+            CollisionData.id = this.networkIdentity.GetID();
+            networkIdentity.GetSocket().Emit("collisionDestroy", new JSONObject(JsonUtility.ToJson(CollisionData)));
         }
         else
         {

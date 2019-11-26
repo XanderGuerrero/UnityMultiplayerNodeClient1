@@ -1037,4 +1037,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level.unity
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Online.unity
-  playerPath: D:/WorkSpace/oct27/UnityMultiplayerNodeClient1/build/UnityMultiplayerNodeClient1.exe
+  playerPath: D:/WorkSpace/Nov19_2019/UnityMultiplayerNodeClient1/build/UnityMultiplayerNodeClient1.exe
