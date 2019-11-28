@@ -320,7 +320,7 @@ public class NetworkClient : SocketIOComponent
 
                     //calculate rotation
                     float rot = Mathf.Atan2(directionZ, directionX) * Mathf.Rad2Deg;
-                    Vector3 currentRotation = new Vector3(0, 0, rot - 90);
+                    Vector3 currentRotation = new Vector3(0, 0, rot);
                     spawnedObject.transform.rotation = Quaternion.Euler(currentRotation);
 
                     //WhoActivateMe whoActivateMe = spawnedObject.GetComponent<WhoActivateMe>();

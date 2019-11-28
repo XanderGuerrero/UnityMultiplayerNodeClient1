@@ -42,49 +42,33 @@ public class CollisionDestory : MonoBehaviour
             Debug.Log("Obecjt we collided with ID before formatting: " + ni.GetID());
             string nameOfCollisionObj = ni.ToString().Substring(0, ni.ToString().IndexOf('('));
 
-            if(this.gameObject.name == "Asteroid1" && nameOfCollisionObj == "Asteroid1")
+
+            string stringBeforeChar = ni.ToString().Substring(ni.ToString().IndexOf('('), ni.ToString().IndexOf(')'));
+            stringBeforeChar = stringBeforeChar.Substring(stringBeforeChar.IndexOf('('), stringBeforeChar.ToString().IndexOf(')'));
+            stringBeforeChar = stringBeforeChar.Substring(stringBeforeChar.LastIndexOf('(') + 1);
+            CollisionData.collisionObjectsNetID = stringBeforeChar;
+            CollisionData.name = nameOfCollisionObj;
+
+
+            var Dist = collision.gameObject.transform.position - collision.other.gameObject.transform.position;
+            Debug.Log("distance: " + Dist);
+            Debug.Log("Obecjt we collided with name after formatting: " + CollisionData.name);
+            Debug.Log("Obecjt we collided with ID after formatting: " + CollisionData.collisionObjectsNetID);
+            //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
+            Debug.Log("CollisionData: " + CollisionData);
+            //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
+            //if the ni is empty or the ni id is not the person who shot the bullet
+            Debug.Log("CollisionData: " + ni);
+            Debug.Log("CollisionData: " + whoActivatedMe.GetActivator());
+            Debug.Log("CollisionData: " + ni.GetID());
+            if (ni == null || ni.GetID() != whoActivatedMe.GetActivator())
             {
-                //reflect this gameobject off of the other asteroid
-                //send new position, new direction, new speed, name and id, tumble value back
-                //braodcast to all clients by calling a new event On("updateAstroidmovement")
+                CollisionData.distance = 0;
+                CollisionData.id = this.networkIdentity.GetID();
+
+
+                networkIdentity.GetSocket().Emit("collisionDestroy", new JSONObject(JsonUtility.ToJson(CollisionData)));
             }
-            else
-            {
-                string stringBeforeChar = ni.ToString().Substring(ni.ToString().IndexOf('('), ni.ToString().IndexOf(')'));
-                stringBeforeChar = stringBeforeChar.Substring(stringBeforeChar.IndexOf('('), stringBeforeChar.ToString().IndexOf(')'));
-                stringBeforeChar = stringBeforeChar.Substring(stringBeforeChar.LastIndexOf('(') + 1);
-                CollisionData.collisionObjectsNetID = stringBeforeChar;
-                CollisionData.name = nameOfCollisionObj;
-
-
-                var Dist = collision.gameObject.transform.position - collision.other.gameObject.transform.position;
-                Debug.Log("distance: " + Dist);
-                Debug.Log("Obecjt we collided with name after formatting: " + CollisionData.name);
-                Debug.Log("Obecjt we collided with ID after formatting: " + CollisionData.collisionObjectsNetID);
-                //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
-                Debug.Log("CollisionData: " + CollisionData);
-                //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
-                //if the ni is empty or the ni id is not the person who shot the bullet
-                Debug.Log("CollisionData: " + ni);
-                Debug.Log("CollisionData: " + whoActivatedMe.GetActivator());
-                Debug.Log("CollisionData: " + ni.GetID());
-                if (ni == null || ni.GetID() != whoActivatedMe.GetActivator())
-                {
-                    CollisionData.distance = 0;
-                    CollisionData.id = this.networkIdentity.GetID();
-
-
-                    networkIdentity.GetSocket().Emit("collisionDestroy", new JSONObject(JsonUtility.ToJson(CollisionData)));
-                }
-            }
-   
-
-
         }
-
-
-
-   
-
     }
 }
