@@ -76,7 +76,9 @@ public class AsteroidCollisionDestory : MonoBehaviour
             string stringBeforeChar = ni.ToString().Substring(ni.ToString().IndexOf('('), ni.ToString().IndexOf(')'));
             stringBeforeChar = stringBeforeChar.Substring(stringBeforeChar.IndexOf('('), stringBeforeChar.ToString().IndexOf(')'));
             stringBeforeChar = stringBeforeChar.Substring(stringBeforeChar.LastIndexOf('(') + 1);
+            Debug.Log("stringBeforeChar: " + stringBeforeChar);
             CollisionData.collisionObjectsNetID = stringBeforeChar;
+            Debug.Log("stringBeforeChar: " + stringBeforeChar);
             CollisionData.name = nameOfCollisionObj;
 
 

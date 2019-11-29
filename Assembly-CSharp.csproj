@@ -74,6 +74,7 @@
     <Compile Include="Assets\Code\Camera\CameraMotor.cs" />
     <Compile Include="Assets\Code\GamePlay\AsteroidCollisionDestory.cs" />
     <Compile Include="Assets\Code\GamePlay\AsteroidMovement.cs" />
+    <Compile Include="Assets\Code\GamePlay\BeltObject.cs" />
     <Compile Include="Assets\Code\GamePlay\CollisionDestory.cs" />
     <Compile Include="Assets\Code\GamePlay\DestroyAfterSpecifiedTime.cs" />
     <Compile Include="Assets\Code\GamePlay\DestroyExplosion.cs" />
