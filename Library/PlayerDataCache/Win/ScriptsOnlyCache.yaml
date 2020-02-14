@@ -1,5 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp-Editor.dll:
+    - ReadmeEditor
     Assembly-CSharp.dll:
     - ApplicationManager
     - AsteroidCollisionDestory
@@ -22,6 +24,7 @@ ScriptsOnlyBuild:
     - PlayerManager3
     - PlayerManager4
     - Projectile
+    - Readme
     - SceneManagementManager
     - ServerObjects
     - WhoActivateMe
@@ -33,7 +36,6 @@ ScriptsOnlyBuild:
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule

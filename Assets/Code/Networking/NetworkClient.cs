@@ -167,15 +167,21 @@ public class NetworkClient : SocketIOComponent
             id = id.Trim('"');
 
             float barrelRotation = E.data["barrelRotation"].f;
+           // Debug.Log("barrel rotation value: " + barrelRotation);
             float shipTilt = E.data["shipTiltRotation"].f;
             float shipTiltX = E.data["shipTiltRotationX"].f;
             float shipTiltY = E.data["shipTiltRotationY"].f;
 
-            //Debug.LogFormat("Data back to the client rotation values: ({0}) ", barrelRotation);
+            Debug.LogFormat("Data back to the client rotation values: ({0}) ", barrelRotation);
             NetworkIdentity ni = serverObjects[id];
 
             ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
             //ni.GetComponent<PlayerManager>().SetRotation(barrelRotation);
+            Debug.LogFormat("barrel rotation : " + barrelRotation);
+            if (ni.GetComponent<PlayerManager4>() == null)
+            {
+                ni.GetComponent<AIManager>().SetBarrelRotation(barrelRotation);
+            }
 
         });
 
@@ -362,7 +368,7 @@ public class NetworkClient : SocketIOComponent
                     //spawnedObject.GetComponent<Rigidbody>().velocity = -transform.forward * speed;
 
                 }
-                if (name == "AI_Base")
+                if (name == "AI_Base" || name == "ENEMY_AI")
                 {
                     spawnedObject.name = string.Format("{0}({1})", name, id);
                 }

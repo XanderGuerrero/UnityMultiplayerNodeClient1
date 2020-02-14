@@ -44,3 +44,6 @@ MonoBehaviour:
     Prefab: {fileID: 6867125841215783252, guid: 60109b7286f9c3c48b8a45e449a579a5,
       type: 3}
     Count: 100
+  - Name: ENEMY_AI
+    Prefab: {fileID: 1641971311212662, guid: fb80d574ec67a7c4e8ef1a14a65990f6, type: 3}
+    Count: 100
