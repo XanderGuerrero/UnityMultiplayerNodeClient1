@@ -13,7 +13,7 @@ public class AIManager : MonoBehaviour
 
     public void SetBarrelRotation(float value)
     {
-        BarrelTransform.localEulerAngles = new Vector3(x: value, y: 0, z: 0);
+        BarrelTransform.localEulerAngles = new Vector3(x: 0, y: value + 90, z: 0);
     }
 
 }
