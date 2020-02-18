@@ -115,7 +115,7 @@ public class PlayerManager4 : MonoBehaviour
         {
             //Debug.Log("swerve right and left: ");
             rb.AddRelativeForce(Vector3.right * InputManager.MainLeftJoystick().x * sideMovementAmount);
-            tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, 30 * InputManager.MainLeftJoystick().x, ref tiltAmountVelocity, 0.15f);
+            tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, 50 * InputManager.MainLeftJoystick().x, ref tiltAmountVelocity, 0.15f);
         }
         else
         {

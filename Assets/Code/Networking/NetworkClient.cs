@@ -177,12 +177,30 @@ public class NetworkClient : SocketIOComponent
 
             ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
             //ni.GetComponent<PlayerManager>().SetRotation(barrelRotation);
-            Debug.LogFormat("barrel rotation : " + barrelRotation);
-            if (ni.GetComponent<PlayerManager4>() == null)
-            {
-                ni.GetComponent<AIManager>().SetBarrelRotation(barrelRotation);
-            }
 
+
+        });
+
+        On("UpdateAI", (E) =>
+        {
+            Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
+
+            string id = E.data["id"].ToString();
+            id = id.Trim('"');
+            float x = E.data["position"]["x"].f;
+            float y = E.data["position"]["y"].f;
+            float z = E.data["position"]["z"].f;
+            //float barrelRotation = E.data["barrelRotation"].f;
+             //Debug.Log("barrel rotation value: " + barrelRotation);
+            float shipTilt = E.data["shipTiltRotation"].f;
+            float shipTiltX = E.data["shipTiltRotationX"].f;
+            float shipTiltY = E.data["shipTiltRotationY"].f;
+            NetworkIdentity ni = serverObjects[id];
+            //ni.transform.position = new Vector3(x, y, z);
+            ni.transform.position = Vector3.Lerp(ni.transform.position, new Vector3(x, y, z), 10f * Time.deltaTime);
+            //ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
+            //ni.GetComponent<AIManager>().SetBarrelRotation(barrelRotation);
+            ni.GetComponent<AIManager>().SetEnemyShipRotation(shipTiltX, shipTiltY, shipTilt);
         });
 
         On("AsteroidRespawn", (E) =>
