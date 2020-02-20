@@ -191,16 +191,22 @@ public class NetworkClient : SocketIOComponent
             float y = E.data["position"]["y"].f;
             float z = E.data["position"]["z"].f;
             //float barrelRotation = E.data["barrelRotation"].f;
-             //Debug.Log("barrel rotation value: " + barrelRotation);
+            //Debug.Log("barrel rotation value: " + barrelRotation);
             float shipTilt = E.data["shipTiltRotation"].f;
             float shipTiltX = E.data["shipTiltRotationX"].f;
             float shipTiltY = E.data["shipTiltRotationY"].f;
             NetworkIdentity ni = serverObjects[id];
-            //ni.transform.position = new Vector3(x, y, z);
-            ni.transform.position = Vector3.Lerp(ni.transform.position, new Vector3(x, y, z), 10f * Time.deltaTime);
-            //ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
-            //ni.GetComponent<AIManager>().SetBarrelRotation(barrelRotation);
-            ni.GetComponent<AIManager>().SetEnemyShipRotation(shipTiltX, shipTiltY, shipTilt);
+            if (ni.gameObject.activeInHierarchy)
+            {
+                //ni.transform.position = new Vector3(x, y, z);
+
+                StartCoroutine(AIPositionSmoothing(ni.transform, new Vector3(x, y, z)));
+
+                //ni.transform.position = Vector3.Lerp(ni.transform.position, new Vector3(shipTiltX, y, z), 10f * Time.deltaTime);
+                //ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
+                //ni.GetComponent<AIManager>().SetBarrelRotation(barrelRotation);
+                ni.GetComponent<AIManager>().SetEnemyShipRotation(shipTiltX, shipTiltY, shipTilt);
+            }
         });
 
         On("AsteroidRespawn", (E) =>
@@ -447,6 +453,10 @@ public class NetworkClient : SocketIOComponent
             string id = E.data["id"].ToString();
             id = id.Trim('"');
             NetworkIdentity ni = serverObjects[id];
+            if (ni.GetComponent<AIManager>())
+            {
+                ni.GetComponent<AIManager>().StopCoroutines();
+            }
             ni.gameObject.SetActive(false);
         });
 
@@ -484,6 +494,32 @@ public class NetworkClient : SocketIOComponent
         Emit("joinGame");
     }
 
+
+    private IEnumerator AIPositionSmoothing(Transform AiTransform, Vector3 goalPosition)
+    {
+        float count = 0.01f;//make sure to sync this with the server ai_base.speed
+        float currentTime = 0.0f;
+        Vector3 startPositiion = AiTransform.position;
+
+        while(currentTime < count)
+        {
+            currentTime += Time.deltaTime;
+
+            if (currentTime < count)
+            {
+                AiTransform.position = Vector3.Lerp(startPositiion, goalPosition, currentTime / count);
+            }
+            yield return new WaitForEndOfFrame();
+
+            if(AiTransform == null)
+            {
+                currentTime = count;
+                yield return null;
+            }
+
+        }
+        yield return null;
+    }
     //void OnGUI()
     //{
     //    GUILayout.Label("Tumble: " + tumble);

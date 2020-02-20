@@ -38,8 +38,8 @@ public class CollisionDestory : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Obecjt we collided with ID before formatting: " + ni);
-            //Debug.Log("Obecjt we collided with ID before formatting: " + ni.GetID());
+            Debug.Log("Obecjt we collided with ID before formatting: " + ni);
+            Debug.Log("Obecjt we collided with ID before formatting: " + ni.GetID());
             string nameOfCollisionObj = ni.ToString().Substring(0, ni.ToString().IndexOf('('));
 
 
@@ -52,8 +52,8 @@ public class CollisionDestory : MonoBehaviour
 
             var Dist = collision.gameObject.transform.position - collision.other.gameObject.transform.position;
            // Debug.Log("distance: " + Dist);
-           // Debug.Log("Obecjt we collided with name after formatting: " + CollisionData.name);
-           // Debug.Log("Obecjt we collided with ID after formatting: " + CollisionData.collisionObjectsNetID);
+            Debug.Log("Obecjt we collided with name after formatting: " + CollisionData.name);
+            Debug.Log("Obecjt we collided with ID after formatting: " + CollisionData.collisionObjectsNetID);
             //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
            // Debug.Log("CollisionData: " + CollisionData);
             //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
