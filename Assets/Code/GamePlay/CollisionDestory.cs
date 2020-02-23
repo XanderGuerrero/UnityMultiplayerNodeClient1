@@ -34,7 +34,7 @@ public class CollisionDestory : MonoBehaviour
         {
             CollisionData.collisionObjectsNetID = "environment";
             CollisionData.id = this.networkIdentity.GetID();
-            networkIdentity.GetSocket().Emit("collisionDestroy", new JSONObject(JsonUtility.ToJson(CollisionData)));
+            //networkIdentity.GetSocket().Emit("collisionDestroy", new JSONObject(JsonUtility.ToJson(CollisionData)));
         }
         else
         {
@@ -59,13 +59,14 @@ public class CollisionDestory : MonoBehaviour
             //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
             //if the ni is empty or the ni id is not the person who shot the bullet
             //Debug.Log("CollisionData: " + ni);
-            //Debug.Log("CollisionData: " + whoActivatedMe.GetActivator());
-            //Debug.Log("CollisionData: " + ni.GetID());
-            if (ni == null || ni.GetID() != whoActivatedMe.GetActivator())
+            Debug.Log("whoActivatedMe: " + this.whoActivatedMe.GetActivator());
+            Debug.Log("ni.GetID(): " + ni.GetID());
+            if (ni == null || ni.GetID() != this.whoActivatedMe.GetActivator())
             {
+                Debug.Log("whoActivatedMe: " + whoActivatedMe.GetActivator());
                 CollisionData.distance = 0;
                 CollisionData.id = this.networkIdentity.GetID();
-                Debug.Log("asteroid position: " + collision.gameObject.transform.position);
+                //Debug.Log("asteroid position: " + collision.gameObject.transform.position);
                 CollisionData.position.x =  collision.gameObject.transform.position.x;
                 CollisionData.position.y = collision.gameObject.transform.position.y;
                 CollisionData.position.z = collision.gameObject.transform.position.z;

@@ -183,7 +183,7 @@ public class NetworkClient : SocketIOComponent
 
         On("UpdateAI", (E) =>
         {
-            Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
+            //Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
 
             string id = E.data["id"].ToString();
             id = id.Trim('"');
