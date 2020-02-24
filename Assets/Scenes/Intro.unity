@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromCameraTarget: {x: 0, y: 0, z: 0}
   velocityCameraFollow: {x: 0, y: 0, z: 0}
-  behindPosition: {x: 0, y: 3, z: -11.5}
+  behindPosition: {x: 0, y: 6, z: -29}
   angle: 10.5
   speed: 40
   distanceDamp: 0.15

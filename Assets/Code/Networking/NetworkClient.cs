@@ -183,7 +183,7 @@ public class NetworkClient : SocketIOComponent
 
         On("UpdateAI", (E) =>
         {
-            //Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
+            Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
 
             string id = E.data["id"].ToString();
             id = id.Trim('"');
@@ -198,9 +198,9 @@ public class NetworkClient : SocketIOComponent
             NetworkIdentity ni = serverObjects[id];
             if (ni.gameObject.activeInHierarchy)
             {
-                //ni.transform.position = new Vector3(x, y, z);
-
-                StartCoroutine(AIPositionSmoothing(ni.transform, new Vector3(x, y, z)));
+                ni.transform.position = new Vector3(x, y, z);
+                Debug.Log("ABOUT TO UPDATE THE AI POSITION, DATA : ({0}) " + E.data);
+                //StartCoroutine(AIPositionSmoothing(ni.transform, new Vector3(x, y, z)));
 
                 //ni.transform.position = Vector3.Lerp(ni.transform.position, new Vector3(shipTiltX, y, z), 10f * Time.deltaTime);
                 //ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
@@ -520,12 +520,12 @@ public class NetworkClient : SocketIOComponent
         }
         yield return null;
     }
-    //void OnGUI()
-    //{
-    //    GUILayout.Label("Tumble: " + tumble);
-    //    GUILayout.Label("Tumble: " + tumble);
-    //    GUILayout.Label("Tumble: " + tumble);
-    //}
+    void OnGUI()
+    {
+        GUILayout.Label("Tumble: " + tumble);
+        GUILayout.Label("Tumble: " + tumble);
+        GUILayout.Label("Tumble: " + tumble);
+    }
 }
 
 
