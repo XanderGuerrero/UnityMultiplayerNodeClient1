@@ -24,7 +24,7 @@ public class DestroyExplosion : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToDestroy);
         //GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
-        Debug.Log("destroy the explosion NOW");
+        //Debug.Log("destroy the explosion NOW");
 
 
         networkIdentity.GetSocket().Emit("DestroyExplosion", new JSONObject(JsonUtility.ToJson(new IdData()

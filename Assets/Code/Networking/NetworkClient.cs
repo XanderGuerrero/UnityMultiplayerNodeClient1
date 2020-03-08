@@ -138,7 +138,7 @@ public class NetworkClient : SocketIOComponent
             //asteroid.RotationX = rotationX;
             //asteroid.RotationX = rotationY;
             //asteroid.RotationX = rotationZ;
-            Debug.Log(" updated asteroid Edata: " + E.data);
+            //Debug.Log(" updated asteroid Edata: " + E.data);
 
         });
 
@@ -161,7 +161,7 @@ public class NetworkClient : SocketIOComponent
 
         On("updateRotation", (E) =>
         {
-            Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
+            //Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
 
             string id = E.data["id"].ToString();
             id = id.Trim('"');
@@ -181,32 +181,101 @@ public class NetworkClient : SocketIOComponent
 
         });
 
+        On("updateAI_Rotation", (E) =>
+        {
+            //Debug.Log("Got AI Data back, ROTATION : ({0}) " + E.data);
+
+            string id = E.data["id"].ToString();
+            id = id.Trim('"');
+
+            //float barrelRotation = E.data["barrelRotation"].f;
+            // Debug.Log("barrel rotation value: " + barrelRotation);
+            float shipTilt = E.data["shipTiltRotation"].f;
+            float shipTiltX = E.data["shipTiltRotationX"].f;
+            float shipTiltY = E.data["shipTiltRotationY"].f;
+
+            //Debug.LogFormat("Data back to the client rotation values: ({0}) ", barrelRotation);
+            NetworkIdentity ni = serverObjects[id];
+            if (ni.gameObject.activeInHierarchy)
+            {
+                //ni.transform.position = new Vector3(x, y, z);
+                //Debug.Log("ABOUT TO UPDATE THE AI POSITION, DATA : ({0}) " + E.data);
+                //StartCoroutine(AIPositionSmoothing(ni.transform, new Vector3(x, y, z)));
+
+                //ni.transform.position = Vector3.Lerp(ni.transform.position, new Vector3(shipTiltX, y, z), 10f * Time.deltaTime);
+                //ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
+                //ni.GetComponent<AIManager>().SetBarrelRotation(barrelRotation);
+                //ni.GetComponent<FlockAI>().SetEnemyShipRotation(shipTiltX, shipTiltY, shipTilt);
+                //FlockAI AI = ni.GetComponent<FlockAI>();
+                //AI.SetEnemyShipRotation(shipTiltX, shipTiltY, shipTilt);
+
+                ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
+
+            }
+            //ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
+            //ni.GetComponent<PlayerManager>().SetRotation(barrelRotation);
+
+
+        });
+
         On("UpdateAI", (E) =>
         {
-            Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
+            //Debug.Log("Got Data back, ROTATION : ({0}) " + E.data);
 
             string id = E.data["id"].ToString();
             id = id.Trim('"');
             float x = E.data["position"]["x"].f;
             float y = E.data["position"]["y"].f;
             float z = E.data["position"]["z"].f;
+            //spawnedObject.name = string.Format("{0}({1})", name, id);
+            //Debug.Log("about to fire5");
+            float directionX = E.data["direction"]["x"].f;
+            float directionY = E.data["direction"]["y"].f;
+            float directionZ = E.data["direction"]["z"].f;
+            //string activator = E.data["activator"].ToString();
+            //activator = activator.Trim('"');
+            float speed = E.data["speed"].f;
+            //Debug.Log("server spawn bullet speed " + speed);
+            //float speed = E.data["speed"].f;
             //float barrelRotation = E.data["barrelRotation"].f;
             //Debug.Log("barrel rotation value: " + barrelRotation);
-            float shipTilt = E.data["shipTiltRotation"].f;
-            float shipTiltX = E.data["shipTiltRotationX"].f;
-            float shipTiltY = E.data["shipTiltRotationY"].f;
+            //float shipTilt = E.data["shipTiltRotation"].f;
+            //float shipTiltX = E.data["shipTiltRotationX"].f;
+            //float shipTiltY = E.data["shipTiltRotationY"].f;
             NetworkIdentity ni = serverObjects[id];
             if (ni.gameObject.activeInHierarchy)
             {
-                ni.transform.position = new Vector3(x, y, z);
-                Debug.Log("ABOUT TO UPDATE THE AI POSITION, DATA : ({0}) " + E.data);
-                //StartCoroutine(AIPositionSmoothing(ni.transform, new Vector3(x, y, z)));
-
-                //ni.transform.position = Vector3.Lerp(ni.transform.position, new Vector3(shipTiltX, y, z), 10f * Time.deltaTime);
+                //Debug.Log("ABOUT TO UPDATE THE AI POSITION, DATA : ({0}) " + E.data);
+                //ni.GetComponent<FlockAI>().Position = new Vector3(x, y, z);
+                //ni.GetComponent<FlockAI>().Speed = speed;
+                //ni.transform.position = new Vector3(x, y, z);
+                StartCoroutine(AIPositionSmoothing(ni.transform, new Vector3(x, y, z)));
+                //ni.transform.position = Vector3.Lerp(ni.transform.position, new Vector3(x, y, z), 10f * Time.deltaTime);
                 //ni.transform.localEulerAngles = new Vector3(shipTiltX, shipTiltY, shipTilt);
                 //ni.GetComponent<AIManager>().SetBarrelRotation(barrelRotation);
-                ni.GetComponent<AIManager>().SetEnemyShipRotation(shipTiltX, shipTiltY, shipTilt);
+                //ni.GetComponent<AIManager>().SetEnemyShipRotation(shipTiltX, shipTiltY, shipTilt);
+                //calculate rotation
+                float rot = Mathf.Atan2(directionX, directionZ) * Mathf.Rad2Deg;
+                float pitch = -Mathf.Asin(directionY) * Mathf.Rad2Deg;
+                Vector3 currentRotation = new Vector3(pitch, rot, 0);
+                //ni.transform.rotation = Quaternion.Euler(currentRotation);
+
+                FlockAI AI = ni.GetComponent<FlockAI>();
+                AI.SetEnemyShipRotation(rot, pitch);
+                //AI.Direction = new Vector3(directionX, directionY, directionZ);
+                //AI.Speed = speed;
+
+                //Debug.Log("AI direction is: " + AI.Direction + " speed: " + speed);
             }
+
+
+
+
+
+
+
+
+
         });
 
         On("AsteroidRespawn", (E) =>
@@ -255,7 +324,7 @@ public class NetworkClient : SocketIOComponent
             asteroid.RotationX = rotationX;
             asteroid.RotationX = rotationY;
             asteroid.RotationX = rotationZ;
-            Debug.Log("Edata: " + E.data);
+            //Debug.Log("Edata: " + E.data);
 
 
             ni.gameObject.SetActive(true);
@@ -340,61 +409,15 @@ public class NetworkClient : SocketIOComponent
                     whoActivateMe.SetActivator(activator);
                     spawnedObject.AddComponent<BeltObject>().SetupAsteroidBeltObject(Random.Range(1, 3f), Random.Range(1, 1), Planet, true);
 
-                    //Debug.Log("spawnedObject.name: " + spawnedObject.name);
-                    //tumble = E.data["tumble"].f;
-                    //Debug.Log("tumble!!!!!!: " + E.data.ToString());
-                    //float directionX = E.data["direction"]["x"].f;
-                    //float directionY = E.data["direction"]["y"].f;
-                    //float directionZ = E.data["direction"]["z"].f;
-                    //float speed = E.data["speed"].f;
-                    //float scaleX = E.data["scale"]["x"].f;
-                    //float scaleY = E.data["scale"]["y"].f;
-                    //float scaleZ = E.data["scale"]["z"].f;
-                    //float rotationX = E.data["rotationX"].f;
-                    //float rotationY = E.data["rotationY"].f;
-                    //float rotationZ = E.data["rotationZ"].f;
-                    //Debug.Log("server spawn asteroid rotation x: " + E.data["rotationX"].f);
-                    //string activator = E.data["activator"].ToString();
-                    //activator = activator.Trim('"');
-                    //float speed = E.data["speed"].f;
-                    //Debug.Log("speed!!!!!!: " + E.data["speed"].f);
-
-                    //calculate rotation
-                    //float rot = Mathf.Atan2(directionZ, directionX) * Mathf.Rad2Deg;
-                    //Vector3 currentRotation = new Vector3(0, 0, rot);
-                    //spawnedObject.transform.rotation = Quaternion.Euler(currentRotation);
-
-                    //WhoActivateMe whoActivateMe = spawnedObject.GetComponent<WhoActivateMe>();
-                    //whoActivateMe.SetActivator(activator);
-
-
-
-                    //AsteroidMovement asteroid = spawnedObject.GetComponent<AsteroidMovement>();
-                    //asteroid = spawnedObject.GetComponent<AsteroidMovement>();
-                    //asteroid.Direction = new Vector3(directionX, directionY, directionZ);
-                    //asteroid.Speed = speed;
-                    //asteroid.Tumble = tumble;
-                    //asteroid.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
-                    //asteroid.RotationX = rotationX;
-                    //asteroid.RotationX = rotationY;
-                    //asteroid.RotationX = rotationZ;
-                    //Debug.Log("Edata: " + E.data);
-                    //Rigidbody rb = asteroid.GetComponent<Rigidbody>();
-                    //rb.angularVelocity = UnityEngine.Random.insideUnitSphere * (tumble);
-                    //rb.velocity = asteroid.Direction * speed * NetworkClient.SERVER_UPDATE_TIME * Time.deltaTime;
-                    //Debug.Log("server spawn Asteroid Direction X " + E.data["direction"]["x"].f);
-                    // Debug.Log("server spawn Asteroid Direction Y " + E.data["direction"]["y"].f);
-                    //Debug.Log("server spawn Asteroid Direction Z " + E.data["direction"]["z"].f);
-                    //Debug.Log("server spawn Asteroid Direction " + asteroid.Direction.ToString());
-                    //Debug.Log("server spawn Asteroid speed " + asteroid.Speed);
-                    //Debug.Log("server spawn Asteroid tumble " + asteroid.Tumble);
-                    //spawnedObject.GetComponent<Rigidbody>().angularVelocity = UnityEngine.Random.insideUnitSphere * (tumble);
-                    //spawnedObject.GetComponent<Rigidbody>().velocity = -transform.forward * speed;
-
                 }
                 if (name == "AI_Base" || name == "ENEMY_AI")
                 {
                     spawnedObject.name = string.Format("{0}({1})", name, id);
+                }
+                if (name == "FLOCK_AI")
+                {
+                    spawnedObject.name = string.Format("{0}({1})", name, id);
+                    spawnedObject.AddComponent<FlockAI>();
                 }
                 serverObjects.Add(id, ni);
             }
@@ -497,7 +520,7 @@ public class NetworkClient : SocketIOComponent
 
     private IEnumerator AIPositionSmoothing(Transform AiTransform, Vector3 goalPosition)
     {
-        float count = 0.01f;//make sure to sync this with the server ai_base.speed
+        float count = 0.1f;//make sure to sync this with the server ai_base.speed
         float currentTime = 0.0f;
         Vector3 startPositiion = AiTransform.position;
 

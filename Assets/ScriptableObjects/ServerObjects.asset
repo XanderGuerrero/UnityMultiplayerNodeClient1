@@ -47,3 +47,7 @@ MonoBehaviour:
   - Name: ENEMY_AI
     Prefab: {fileID: 1641971311212662, guid: fb80d574ec67a7c4e8ef1a14a65990f6, type: 3}
     Count: 100
+  - Name: FLOCK_AI
+    Prefab: {fileID: 5653382698907263866, guid: 3bad4f43317d8b947921a708f05ee3c2,
+      type: 3}
+    Count: 100

@@ -30,13 +30,13 @@ public class BeltObject : MonoBehaviour
     {
         if (rotationClokWise)
         {
-            transform.RotateAround(parent.transform.position, parent.transform.up, orbitSpeed * Time.deltaTime);
+            transform.RotateAround(parent.transform.position, parent.transform.up, orbitSpeed * Time.deltaTime * NetworkClient.SERVER_UPDATE_TIME);
         }
         else
         {
-            transform.RotateAround(parent.transform.position, parent.transform.up, orbitSpeed * Time.deltaTime);
+            transform.RotateAround(parent.transform.position, parent.transform.up, -orbitSpeed * Time.deltaTime * NetworkClient.SERVER_UPDATE_TIME);
         }
 
-        transform.Rotate(rotationDirection, rotationSpeed * Time.deltaTime);
+        transform.Rotate(rotationDirection, rotationSpeed * Time.deltaTime * NetworkClient.SERVER_UPDATE_TIME);
     }
 }

@@ -38,8 +38,8 @@ public class CollisionDestory : MonoBehaviour
         }
         else
         {
-            Debug.Log("Obecjt we collided with ID before formatting: " + ni);
-            Debug.Log("Obecjt we collided with ID before formatting: " + ni.GetID());
+            //Debug.Log("Obecjt we collided with ID before formatting: " + ni);
+            //Debug.Log("Obecjt we collided with ID before formatting: " + ni.GetID());
             string nameOfCollisionObj = ni.ToString().Substring(0, ni.ToString().IndexOf('('));
 
 
@@ -52,18 +52,18 @@ public class CollisionDestory : MonoBehaviour
 
             var Dist = collision.gameObject.transform.position - collision.other.gameObject.transform.position;
            // Debug.Log("distance: " + Dist);
-            Debug.Log("Obecjt we collided with name after formatting: " + CollisionData.name);
-            Debug.Log("Obecjt we collided with ID after formatting: " + CollisionData.collisionObjectsNetID);
+            //Debug.Log("Obecjt we collided with name after formatting: " + CollisionData.name);
+            //Debug.Log("Obecjt we collided with ID after formatting: " + CollisionData.collisionObjectsNetID);
             //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
            // Debug.Log("CollisionData: " + CollisionData);
             //Debug.Log("distance: " + (collision.gameObject.transform.position - collision.other.gameObject.transform.position));
             //if the ni is empty or the ni id is not the person who shot the bullet
             //Debug.Log("CollisionData: " + ni);
-            Debug.Log("whoActivatedMe: " + this.whoActivatedMe.GetActivator());
-            Debug.Log("ni.GetID(): " + ni.GetID());
+            //Debug.Log("whoActivatedMe: " + this.whoActivatedMe.GetActivator());
+            //Debug.Log("ni.GetID(): " + ni.GetID());
             if (ni == null || ni.GetID() != this.whoActivatedMe.GetActivator())
             {
-                Debug.Log("whoActivatedMe: " + whoActivatedMe.GetActivator());
+                //Debug.Log("whoActivatedMe: " + whoActivatedMe.GetActivator());
                 CollisionData.distance = 0;
                 CollisionData.id = this.networkIdentity.GetID();
                 //Debug.Log("asteroid position: " + collision.gameObject.transform.position);
