@@ -46,6 +46,11 @@ public class AsteroidMovement : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        //GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * tumble;
+    }
+
     // Update is called once per frame
     void Update()
     {

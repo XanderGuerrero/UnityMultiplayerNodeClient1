@@ -40,7 +40,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTransform: {fileID: 5653382698907053844}
-  speed: 0
 --- !u!1001 &5653382698907340776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,6 +143,26 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 3fbde013fc1ae0a45a2afb111678bdee, type: 3}
+    - target: {fileID: 4241909840213027981, guid: 32303dc3554fcfc419798a1f0235187f,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241909840213027981, guid: 32303dc3554fcfc419798a1f0235187f,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241909840213027981, guid: 32303dc3554fcfc419798a1f0235187f,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936998729270195067, guid: 32303dc3554fcfc419798a1f0235187f,
+        type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32303dc3554fcfc419798a1f0235187f, type: 3}
 --- !u!1 &5653382698907263866 stripped

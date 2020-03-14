@@ -5,40 +5,40 @@ using UnityEngine;
 public class PlayerManager4 : MonoBehaviour
 {
 
-    private float baseSpeed = 1f;
-    private float rotSpeedX = 2.0f;
-    private float rotSpeedY = 1.5f;
-    private float rotateSpeed = 100.5f;
+    //private float baseSpeed = 1f;
+    //private float rotSpeedX = 2.0f;
+    //private float rotSpeedY = 1.5f;
+    //private float rotateSpeed = 100.5f;
     private Quaternion startRotation;
     private Vector3 force;
     private Rigidbody rb;
-    private float lastRotation;
+   // private float lastRotation;
     public GameObject crossHairs;
 
-    private Vector3 target;
+    //private Vector3 target;
 
     //shooting
     private BulletData bulletData;
     private CoolDown shootingCoolDown;
 
-    [Header("Data")]
-    [SerializeField]
-    private float speed = 5;
+    //[Header("Data")]
+    //[SerializeField]
+    //private float speed = 5;
 
     [Header("Class References")]
     [SerializeField]
     private NetworkIdentity networkIdentity;
-    Vector2 MD;
+    //Vector2 MD;
 
     private Camera mainCamera;
-    float horizontalSpeed = 2.0f;
-    float verticalSpeed = 2.0f;
+    //float horizontalSpeed = 2.0f;
+    //float verticalSpeed = 2.0f;
     Rect screenRect;
 
     [SerializeField]
     private Transform shotSpawnPoint;
 
-    private CharacterController controller;
+    //private CharacterController controller;
     private float tiltAmountLaterally = 0;
     public float tilt;
     private Quaternion targetRotation;
@@ -71,7 +71,7 @@ public class PlayerManager4 : MonoBehaviour
         bulletData = new BulletData();
         bulletData.position = new Position();
         bulletData.direction = new Position();
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
     }
     public void Update()
@@ -200,7 +200,7 @@ public class PlayerManager4 : MonoBehaviour
         }
     }
 
-    private float movementSpeed = 5000f;
+    private float movementSpeed = 12000f;
     private void checkMovement()
     {
         Vector3 Linputs = InputManager.MainLeftJoystick();
@@ -273,9 +273,9 @@ public class PlayerManager4 : MonoBehaviour
 
         yRotation += Rinputs.x;
 
-        currentXrotation = Mathf.SmoothDamp(currentXrotation, xRotation, ref rotationXveloctiy, 0.15f);
+        currentXrotation = Mathf.SmoothDamp(currentXrotation, xRotation, ref rotationXveloctiy, 0.001f);
 
-        currentYrotation = Mathf.SmoothDamp(currentYrotation, yRotation, ref rotationYveloctiy, 0.15f);
+        currentYrotation = Mathf.SmoothDamp(currentYrotation, yRotation, ref rotationYveloctiy, 0.001f);
 
         //currentZrotation = Mathf.SmoothDamp(currentZrotation, zRotation, ref rotationZveloctiy, 0.15f);
 
@@ -283,15 +283,15 @@ public class PlayerManager4 : MonoBehaviour
     }
 
 
-    void OnGUI()
-    {
-        GUILayout.Label("Forward direction x " + shotSpawnPoint.forward.x);
-        GUILayout.Label("Forward direction y " + shotSpawnPoint.forward.y);
-        GUILayout.Label("Forward direction z " + shotSpawnPoint.forward.z);
-        GUILayout.Label("MainLeftJoystick " + InputManager.MainLeftJoystick().ToString());
-        GUILayout.Label("Mathf.Abs(MainLeftJoystick.x) " + Mathf.Abs(InputManager.MainLeftJoystick().x));
-        GUILayout.Label("Mathf.Abs(MainLeftJoystick.y) " + Mathf.Abs(InputManager.MainLeftJoystick().y));
-    }
+    //void OnGUI()
+    //{
+    //    GUILayout.Label("Forward direction x " + shotSpawnPoint.forward.x);
+    //    GUILayout.Label("Forward direction y " + shotSpawnPoint.forward.y);
+    //    GUILayout.Label("Forward direction z " + shotSpawnPoint.forward.z);
+    //    GUILayout.Label("MainLeftJoystick " + InputManager.MainLeftJoystick().ToString());
+    //    GUILayout.Label("Mathf.Abs(MainLeftJoystick.x) " + Mathf.Abs(InputManager.MainLeftJoystick().x));
+    //    GUILayout.Label("Mathf.Abs(MainLeftJoystick.y) " + Mathf.Abs(InputManager.MainLeftJoystick().y));
+    //}
 
 
     private void checkShooting()

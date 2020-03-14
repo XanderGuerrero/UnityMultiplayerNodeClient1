@@ -11,9 +11,5 @@ public class ApplicationManager : MonoBehaviour
         SceneManagementManager.Instance.LoadLevel(SceneList.MAIN_MENU, onLevelLoaded: (levelName) => { });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

@@ -22,7 +22,7 @@ public class NetworkClient : SocketIOComponent
     //Objectpooler objectPooler;
     float tumble;
     public GameObject Planet;
-
+    string[] AsteroidPrefabNames = {"Asteroid1", "Asteroid2"};
     //same value across all instaniate object of type networkClient
     public static string ClientId { get; private set; }
     private Dictionary<string, NetworkIdentity> serverObjects;
@@ -38,6 +38,7 @@ public class NetworkClient : SocketIOComponent
         //initialize dictionary of game objects
         initialize();
         setUpEvents();
+        
         //objectPooler = Objectpooler.Instance;
     }
 
@@ -352,12 +353,23 @@ public class NetworkClient : SocketIOComponent
 
             if (!serverObjects.ContainsKey(id))
             {
-                //Debug.Log("about to fire4");
-                ServerObjectData sod = serverSpawnables.GetObjectByName(name);
-                var spawnedObject = Instantiate(sod.Prefab, networkContainer);
-                //objectPooler.SpawnFromPool(name);
-
+                ServerObjectData sod = null;
+                if (name == AsteroidPrefabNames[0])
+                {
+                    System.Random r = new System.Random();
+                    var rInt = r.Next(0, 2);
+                    //Debug.Log(rInt);
+                    sod = serverSpawnables.GetObjectByName(AsteroidPrefabNames[rInt]);                  
+                }
+                else
+                {
+                    sod = serverSpawnables.GetObjectByName(name);
+                    
+                }
                 
+                var spawnedObject = Instantiate(sod.Prefab, networkContainer);
+                //Debug.Log("about to fire4");
+                //objectPooler.SpawnFromPool(name);
                 //Debug.Log("Spawned " + spawnedObject.name);
                 //Debug.Log("Position " + new Vector3(x, y, z).ToString());
                 spawnedObject.transform.position = new Vector3(x, y, z);
@@ -383,8 +395,10 @@ public class NetworkClient : SocketIOComponent
 
 
                     //calculate rotation
-                    float rot = Mathf.Atan2(directionZ, directionX) * Mathf.Rad2Deg;
-                    Vector3 currentRotation = new Vector3(0, 0, rot);
+                    float rot = Mathf.Atan2(directionX, directionZ) * Mathf.Rad2Deg;
+                    Vector3 currentRotation = new Vector3(0, rot, 0);
+                    //float pitch = -Mathf.Asin(directionY) * Mathf.Rad2Deg;
+                    //Vector3 currentRotation = new Vector3(pitch, rot, 0);
                     spawnedObject.transform.rotation = Quaternion.Euler(currentRotation);
 
                     WhoActivateMe whoActivateMe = spawnedObject.GetComponent<WhoActivateMe>();
@@ -395,13 +409,13 @@ public class NetworkClient : SocketIOComponent
                     projectile.Speed = speed;
                 }
                 //if Asteroid1, apply tumble and  as well
-                if (name == "Asteroid1")
+                if (name == AsteroidPrefabNames[0] || name == AsteroidPrefabNames[1])
                 {
                     //Debug.Log("If NAME entered!!!!!!: " + name);
                     //Debug.Log("tumble!!!!!!: " + E.data.ToString());
                     string activator = E.data["activator"].ToString();
                     Random.InitState(10);
-                    spawnedObject.name = string.Format("{0}({1})", name, id);
+                    spawnedObject.name = string.Format("{0}({1})", AsteroidPrefabNames[0], id);
 
                     spawnedObject.transform.rotation = Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
                     spawnedObject.transform.localScale = new Vector3(E.data["scale"]["z"].f.TwoDecimals(), E.data["scale"]["z"].f.TwoDecimals(), E.data["scale"]["z"].f.TwoDecimals());

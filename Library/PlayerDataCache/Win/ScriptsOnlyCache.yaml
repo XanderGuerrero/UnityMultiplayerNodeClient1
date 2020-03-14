@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - CollisionDestory
     - DestroyAfterSpecifiedTime
     - DestroyExplosion
+    - FlockAI
     - GameLobby
     - MenuManager
     - NetworkClient
@@ -23,6 +24,7 @@ ScriptsOnlyBuild:
     - PlayerManager3
     - PlayerManager4
     - Projectile
+    - Readme
     - SceneManagementManager
     - ServerObjects
     - WhoActivateMe
@@ -249,6 +251,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12240}
     - Class: 114
+      Script: {instanceID: 12336}
+    - Class: 114
       Script: {instanceID: 12436}
     - Class: 114
       Script: {instanceID: 12488}
@@ -359,6 +363,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12244}
     - Class: 114
       Script: {instanceID: 12330}
+    - Class: 114
+      Script: {instanceID: 12336}
     - Class: 114
       Script: {instanceID: 12488}
     - Class: 114
@@ -750,7 +756,7 @@ ScriptsOnlyBuild:
     className: CameraFollowDrone
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 0d865904f4200c1d50f3c196ade8ddd4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FlockAI
